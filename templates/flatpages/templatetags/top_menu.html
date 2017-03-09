@@ -1,0 +1,30 @@
+{% load mptt_tags %}
+<ul class="main_menu__root js-main-menu">
+    {% for node in nodes %}
+        {% if node.get_top_menu_children %}
+            <li class="dropdown main_menu__item main_menu__item-wthchildren js-main-menu-link {% if node.url in expand %}active{% endif %} {% if node.type == "catalog" %}main_menu__item-catalog{% endif %} {% if node.type == "program" %}main_menu__item-program{% endif %}{% if node.type == "announce" %} main_menu__item-anounce{% endif %}">
+                <a  href="{{ node.get_absolute_url }}">{{ node.get_menu_title }}</a><b data-toggle="dropdown" class="dropdown-toggle caret"></b>
+                <ul class="dropdown-menu">
+                    {% for child in node.get_top_menu_children %}
+                        <li {% if child.url == url %}class="active"{% endif %}><a href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a></li>
+                        {% if not forloop.last %}
+                            <li class="divider"></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            {% if node.get_announce_count != 0 %}
+            <li class="main_menu__item js-main-menu-link {% if node.url in expand %}active{% endif %} {% if node.type == "catalog" %}main_menu__item-catalog{% endif %} {% if node.type == "program" %}main_menu__item-program{% endif %}{% if node.type == "announce" %} main_menu__item-anounce{% endif %}">
+                <a href="{{ node.get_absolute_url }}">{{ node.get_menu_title }}
+                   {% if node.type == "announce" %}<span class="badge">{{ node.get_announce_count }}</span>{% endif %}
+                </a>
+            </li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>
+<div class="main_menu__item dropdown more js-more-links is-hidden">
+    <span class="more-btn dropdown-toggle" data-toggle="dropdown"></span>
+    <ul class="dropdown-menu js-more-links-menu"></ul>
+</div>

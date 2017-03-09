@@ -1,0 +1,215 @@
+@import variables
+@import ../bootstrap/mixins
+@import mixins
+
+.slider-placeholder
+  height: $main_menu_height
+
+.main-slider
+  color: $link-color
+  position: relative
+  z-index: 1
+  padding: 15px 0
+  margin-top: -15px
+  height: 510px
+  display: flex
+  align-items: center
+
+  +bp-custom(767px)
+    height: 335px
+    padding-top: 20px
+    align-items: flex-start
+
+
+  .owlslider-wrapper
+    width: 100%
+    position: relative
+
+  .owlslider__slide
+    width: 100%
+    box-sizing: border-box
+
+  .owlslider__slide__background
+    width: 100%
+    position: absolute
+    height: 330px
+    z-index: 0
+    left: 0
+    top: 0
+    display: block
+    opacity: 0
+    transition: opacity 500ms ease-in-out
+    background-size: auto 100% !important
+
+    +bp-custom(767px)
+      height: 260px
+
+    &.active
+      opacity: 1
+
+  .owlslider__slide__content
+    width: 100%
+    height: 330px
+    position: relative
+
+    +bp-custom(767px)
+      height: 260px
+
+    h3
+      color: $link-color
+      font-family: $primary-font-family
+      font-weight: 300
+      text-align: left
+      font-size: 46px
+      margin: 70px 0px 20px
+      line-height: 46px
+
+    p
+      font-family: $second-font-family
+      text-align: left
+      margin-bottom: 30px
+      letter-spacing: 0.01em
+      line-height: 24px
+
+    .btn
+      font-family: $primary-font-family
+      font-size: 14px
+      line-height: 18px
+      letter-spacing: 0
+      text-transform: uppercase
+      color: $link-color
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+
+      &.anchored
+        position: absolute
+        bottom: 55px
+        left: 70px
+
+      span
+        font-weight: bold
+        border-radius: 100%
+        padding: 0px 6px 0px 8px
+        margin-left: 43px
+        margin-bottom: 2px
+        color: $main-bgcolor
+        line-height: 1
+        vertical-align: middle
+        background-color: $btn-inactive-bgcolor
+
+        +gradient_top($docbody-color, $btn-inactive-bgcolor)
+
+        +box-shadow(0 -2px 14px rgba(0, 0, 0, 0.1))
+
+        .fa
+          font-size: 20px
+          font-weight: bold
+
+        &:hover
+          color: $main-bgcolor
+          background-color: $btn-inactive-bgcolor
+
+          +gradient_top($docbody-color, $btn-inactive-bgcolor)
+
+          +box-shadow(0 -2px 14px rgba(0, 0, 0, 0.1))
+
+        &:active
+          color: $main-bgcolor
+          background-color: $btn-inactive-bgcolor
+
+          +gradient_top($docbody-color, $btn-inactive-bgcolor)
+
+          +box-shadow(0 -2px 14px rgba(0, 0, 0, 0.1))
+
+          outline: none
+
+      &:active
+        outline: none
+
+  .owl-pagination
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .owl-page
+    margin: 0 5px
+    width: 8px
+    height: 8px
+    cursor: pointer
+    border-radius: 8px
+    background: rgba(#656565, .55)
+    transition: 0.15s ease-in-out 0s
+
+    +bp-custom(767px)
+      width: 6px
+      height: 6px
+      margin: 0 4px
+
+    &.active
+      width: 12px
+      height: 12px
+      border-radius: 12px
+      margin: 0 3px
+      background: url(/media/images/pagination.png) repeat-x 0 0
+      background-size: auto 100%
+      +bp-custom(767px)
+        width: 9px
+        height: 9px
+        margin: 0 3px
+
+  .owl-controls
+    position: absolute
+    z-index: 10
+    width: 100%
+    bottom: -40px
+    box-sizing: border-box
+
+    +bp-custom(767px)
+      bottom: -30px
+
+    .owl-buttons div
+      background: none
+      opacity: 1
+      margin: 0px 5px
+      padding: 0px
+
+    .owl-prev
+      float: left
+
+    .owl-next
+      float: right
+
+    .owl-prev
+      button
+        padding: 0px 19px 2px 13px
+
+    .owl-next
+      button
+        padding: 0px 13px 2px 19px
+
+    .owl-prev, .owl-next
+      button
+        font-weight: bold
+        border-radius: 100%
+        color: $main-bgcolor
+        background-color: rgba(235, 235, 235, 1)
+        background-color: $btn-inactive-bgcolor
+
+        +gradient_top($docbody-color, $btn-inactive-bgcolor)
+
+        +box-shadow(0 -2px 14px rgba(0, 0, 0, 0.1))
+
+        .fa
+          font-size: 45px
+
+        &:hover
+          background: $btn-hover-bgcolor
+          color: $link-color
+
+        &:active
+          background: $btn-focus-bgcolor
+          outline: none
+          color: $link-color

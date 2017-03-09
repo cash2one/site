@@ -1,0 +1,90 @@
+@import variables
+@import mixins
+@import ../bootstrap/variables
+@import ../bootstrap/mixins
+
+
+
+html, body
+  color: $secondary-color
+  background: $docbody-color
+  font-family: $primary-font-family
+  width: 100%
+  height: 100%
+  min-width: $page-min-width
+
+h1, h2, h3, h4, h5, h6
+  color: $secondary-color
+
+a
+  color: $link-news-color
+
+.sm-add-pad
+  +bp-custom($screen-xs-max)
+    padding-bottom: $em
+
+.sm-add-pad-double
+  +bp-custom($screen-xs-max)
+    padding-bottom: 2 * $em
+
+.main-content-wrapper, .footer-wrapper
+
+.main-content-wrapper
+  min-height: 100%
+  padding-bottom: $footer-min-height
+  .pax
+    width: 100%
+    clear: both
+    height: $footer-min-height
+
+    +bp-custom($screen-xs-max)
+      height: $footer-min-height * 1.8
+
+.footer-wrapper
+  margin-top: -$footer-min-height
+  min-height: $footer-min-height
+  position: relative
+  background-color: $breadcrumb_link_color
+  //+bp-custom($screen-xs-max)
+  //  margin-top: -$footer-min-height * 1.8
+  // height: $footer-min-height * 1.8
+
+  &.order_floating_block
+    padding-botttom: 70px
+  .footer
+    //position: absolute
+    width: 100%
+    left: 0
+    bottom: 0
+
+.simple-divider
+  display: block
+  border: 0
+  height: 1px
+  background-color: $hr_simple_bg_color
+  margin: 30px 0
+  width: 100%
+
+.col-mob-left 
+  float: left
+
+.col-mob-right
+  float: right
+
+.col-no-left-padding
+  padding-left: 0
+
+@media screen and (max-width: 767px)
+  .col-no-left-padding
+    padding-left: 15px
+  .footer-wrapper
+    &.order_floating_block
+      padding-bottom: 0
+  .main-content
+    margin-bottom: 15px
+  .simple-divider
+    margin: 25px 0
+  .col-mob-left, .col-mob-right
+    float: none
+  .m-hidden
+    display: none !important

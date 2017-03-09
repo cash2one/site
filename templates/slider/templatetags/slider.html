@@ -1,0 +1,32 @@
+{% load thumbnail %}
+{% if slides %}
+    <div class="main-slider slider">
+        <div class="owlslider-wrapper clearfix">
+            {% for slide in slides %}
+                {% if slide.got_image %}
+                    {% thumbnail slide.image "1440x530" crop="center" upscale=False quality=100 as im %}
+                        <div style="background: url('{{ im.url  }}')50% 50% no-repeat;" class="owlslider__slide__background"></div>
+                    {% endthumbnail %}
+                {% else %}
+                    <div class="owlslider__slide__background"></div>
+                {% endif %}
+            {% endfor %}
+            
+                <div class="owl-carousel">
+                    {% for slide in slides %}
+                        <div class="owlslider__slide">
+                            <div class="owlslider__slide__content">
+                                {% if slide.url %}
+                                    <a href="{{ slide.url }}" target="_blank" class="btn pull-left {% if not slide.content %}anchored{% endif %}"></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            
+        </div>
+    </div>
+{% else %}
+    <div class="slider-placeholder"></div>
+{% endif %}
+

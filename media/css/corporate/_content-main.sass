@@ -1,0 +1,270 @@
+@import variables
+@import mixins
+@import ../bootstrap/variables
+
+.main-content
+  padding-top: 15px
+  margin-bottom: 2*$em
+  .main-content-title
+    font-family: $primary-font-family
+    font-weight: 300
+    color: $secondary-color
+    font-size: 32px
+    margin-bottom: 30px
+    line-height: 1.4
+    letter-spacing: 0
+
+.about_news
+  margin-bottom: 2 * $em
+  .news
+    font-family: $second-font-family
+    font-size: 14px
+    letter-spacing: 0.01em
+    list-style: none
+    padding: 0px
+    color: #ccc
+    font-style: italic
+
+    li
+      margin-bottom: 10px
+
+    a
+      color: $link-news-color
+      text-decoration: underline
+      font-style: normal
+
+      &:hover
+        text-decoration: none
+
+.promotion_item__image
+  width: 46%
+  float: left
+  overflow: hidden
+  position: relative
+  border-radius: $border-radius-main 0px 0px $border-radius-main
+
+  //Chrome fix
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC)
+
+  img
+    width: 100%
+    -moz-transition: transform 500ms ease-in-out
+    -o-transition: transform 500ms ease-in-out
+    -webkit-transition: transform 500ms ease-in-out
+
+    +bp-custom($breakpoint-xss)
+      display: none
+
+.promotion_item__description
+  width: 54%
+  min-height: 209px
+  float: left
+  line-height: 22px
+  letter-spacing: 0.02em
+  color: $docbody-color
+
+  //  padding: 30px 20px 54px 30px;
+  padding: 30px 20px
+  font-size: 18px
+  text-transform: uppercase
+
+  p
+    height: 80%
+    line-height: 22px
+
+$promotion_item_btn_pos_bottom: 31px
+
+.promotion_item-wrapper
+  +bp-custom($screen-xs-max)
+    margin-bottom: 45px
+
+.promotion_item
+  display: block
+  text-decoration: none
+  background: $main-bgcolor
+  border-radius: $border-radius-main
+
+  .btn
+    display: block
+    position: absolute
+    left: 46%
+    bottom: $promotion_item_btn_pos_bottom
+    margin-left: 31px
+    font-family: $second-font-family
+    line-height: 24px
+    letter-spacing: 0
+    font-weight: bold
+    background: $link-color
+    color: $main-bgcolor
+    font-size: 9px
+    padding: 0px 17px
+    border: none
+
+  &:hover
+    background: $btn-hover-bgcolor
+
+    .promotion_item__image img
+      -webkit-transform: scale(1.15)
+      -moz-transform: scale(1.15)
+      -o-transform: scale(1.15)
+
+  &.vertical
+    margin-top: 80px
+
+    & + .promotion_item
+      margin-top: 40px
+
+    .promotion_item__description
+      width: 100%
+
+    .promotion_item__image
+      width: 100%
+      border-radius: $border-radius-main $border-radius-main 0px 0px
+
+    .btn
+      left: 15px
+
+  +bp-custom($breakpoint-xss)
+    .btn
+      left: 15px
+
+    .promotion_item__description
+      width: 100%
+
+    .promotion_item__image
+      width: 100%
+      border-radius: $border-radius-main $border-radius-main 0px 0px
+
+.advantages
+  padding: 40px 0 20px
+  background: url(/media/images/why_we.jpg) no-repeat center top
+  background-size: cover
+  text-align: center
+
+  &-text
+    font-size: 24px !important
+    color: $white_color !important
+    p
+      font-size: 24px !important
+
+.advantage
+  margin-bottom: 45px
+  position: relative
+
+  &:after
+    content: ""
+    position: absolute
+    top: 56px
+    right: -70px
+    height: 4px
+    width: 110px
+    background: url(/media/images/circles.png) no-repeat 0 0
+  
+  &-column
+    &:last-child, &:nth-child(4)
+      .advantage:after
+        display: none
+
+  &-ico
+    position: relative
+    z-index: 1
+    width: 145px
+    height: 145px
+    margin: -10px auto 30px
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    background: url(/media/images/why_bg.png) no-repeat center center
+    transition: 0.15s ease-in-out 0s
+    img
+      display: block
+      max-width: 60px
+      max-height: 60px
+      width: auto
+      height: auto
+      margin-top: 35px
+      transition: 0.15s ease-in-out 0s
+  &-description
+    font-size: 15px
+    color: $white_color
+    line-height: 1.1
+
+  &:hover
+    .advantage-ico
+      background: url(/media/images/why_bg_hover.png) no-repeat center center
+      img
+        margin-top: 40px
+
+.all-button
+  .btn
+    margin-top: 35px
+    padding: 0px 10px
+    font-family: $second-font-family
+    font-weight: bold
+    font-size: 9px
+    line-height: 24px
+    text-transform: uppercase
+    color: $main-bgcolor
+    background: $btn-all-bgcolor
+
+    &:hover
+      background: $btn-hover-bgcolor
+      color: $link-color
+
+    &:active
+      background: $btn-focus-bgcolor
+      color: $link-color
+
+.managers
+  display: flex
+  justify-content: space-between
+  &__card
+    width: 180px
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    &-image
+      display: block
+      max-width: 100%
+      height: auto
+      margin-bottom: 30px
+    &-info
+      p
+        font-size: 12px !important
+      strong, a
+        font-size: 14px !important
+    .btn
+      margin-top: auto
+      margin-bottom: 25px
+
+@media screen and (min-width: 768px) and (max-width: 991px) 
+  .managers
+    flex-wrap: wrap
+    justify-content: flex-start
+    &__card
+      width: 33%
+
+@media screen and (max-width: 767px)
+  .advantage
+    &:after
+      display: none
+    &-ico
+      margin-bottom: 5px  
+  .managers
+    flex-wrap: wrap
+    justify-content: flex-start
+    &__card
+      width: 50%
+      margin-bottom: 20px
+      border-bottom: 1px solid $hr_simple_bg_color
+      &:last-child
+        border: 0
+        margin: 0
+      &-image
+        margin-bottom: 25px
+      &-info
+        max-width: 165px
+
+@media screen and (max-width: 360px)
+  .managers__card
+    width: 100%

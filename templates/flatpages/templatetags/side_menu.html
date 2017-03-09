@@ -1,0 +1,28 @@
+{% if nodes %}
+    {% load mptt_tags %}
+    <nav class="sidebar">
+        <ul class="sidebar-root">
+            {% recursetree nodes %}
+                {% if node.is_leaf_node %}
+                    <li class="{% if node.url == url %}active {% endif %}{% if node.type == "program" %}program{% endif %}">
+                        <div class="menu-item-wrapper{% if node.url == url %} active{% endif %}{% if node.type == "announce" %} announce{% endif %}">
+                            <a class="menu-item" href="{{ node.get_absolute_url }}">{{ node.get_menu_title }}
+                            {% if node.type == "announce" %}<span class="badge">{{ node.get_announce_count }}</span>{% endif %}
+                            </a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="{% if node.url in expand %}open{% endif %}">
+                        <div class="menu-item-wrapper {% if node.url == url %} active{% endif %}">
+                            <a class="menu-item" href="{{ node.get_absolute_url }}">{{ node.get_menu_title }}</a>
+                            <a class="sidebar-caret"></a>
+                        </div>
+                        <ul class="sidebar-submenu">
+                            {{ children }}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endrecursetree %}
+        </ul>
+    </nav>
+{% endif %}

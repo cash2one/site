@@ -1,0 +1,290 @@
+@import corporate/variables
+@import corporate/mixins
+@import bootstrap/mixins
+@import bootstrap/variables
+
+$main_menu_height: 55px
+
+.main_menu-placeholder
+  height: $main_menu_height / 2
+
+  +bp-custom($screen-xs-max)
+    display: none
+
+.main_menu-wrapper__outer
+  position: relative
+
+.main_menu-wrapper
+  left: 0px
+  z-index: 11
+  position: relative
+  width: 100%
+  /*top: -$main_menu_height / 2*/
+  transition: transform 200ms ease-in-out
+  transform-origin: 50% 0px
+
+  &.sticky
+    position: fixed
+    top: 0px
+
+    +gradient_top($docbody-color, $btn-inactive-bgcolor)
+
+    +box-shadow(0 4px 14px rgba(0, 0, 0, 0.25))
+
+    +_animation(hinge_in, 300ms ease-in-out)
+
+    .main_menu
+      background: none
+
+      +box-shadow(none)
+
+.main_menu
+  font-family: $medium-font-family
+  font-size: 16px
+  border: none
+  margin: 0px
+  background-color: $top_menu_static_bg
+  border-radius: 4px
+  display: flex
+  align-items: flex-start
+
+  //+gradient_top(#574bb1, #35237f)
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAA1CAYAAAB1AAqCAAAAcUlEQVRIie3Q0QmAMAwE0GgPSxGd028HdCmFUg2NM5wglGi/+5LLdeuymRAPx16Y/4KcLw6cRTmgWjlglQVGlSQwc7DBQ0sebnDQkjR4tINID2p9PZJ8MBK5QGCk6Ln5P2gFIATOIEZwII0DB6Y5UeAGMcJu7l1+HkYAAAAASUVORK5CYII=)
+  background-repeat: repeat-x
+  background-position: 0 0
+  background-size: auto 100%
+
+  /*+box-shadow(0 -2px 14px rgba(0, 0, 0, 0.1))*/
+
+  +bp-custom($screen-xs-max)
+    display: none
+
+
+  ul
+    list-style: none
+
+  ul.main_menu__root
+    padding: 0px
+    margin: 0
+    border-radius: 4px
+    min-height: $main_menu_height
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    width: 100%
+
+    li
+      flex-grow: 1
+      & + li
+        margin-left: 1px
+      a
+        font-family: $medium-font-family
+        color: $white_color
+
+        &:hover,
+        &:focus
+          text-decoration: none
+          color: $white_color
+      &.active > a
+        color: $white_color
+
+      &.open
+        > .caret:before
+          border-top: 8px solid $btn-focus-bgcolor
+
+        > a
+          color: $white_color
+
+        > .dropdown-menu
+          +_animation(hinge_in, 300ms ease-in-out)
+
+    &.initial
+      li
+        flex-grow: 0
+
+  .main_menu__item
+    display: inline-block
+    padding: 9px 5px
+    text-align: center
+    height: 100%
+    //+gradient_top(#574bb1, #35237f)
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAA1CAYAAAB1AAqCAAAAcUlEQVRIie3Q0QmAMAwE0GgPSxGd028HdCmFUg2NM5wglGi/+5LLdeuymRAPx16Y/4KcLw6cRTmgWjlglQVGlSQwc7DBQ0sebnDQkjR4tINID2p9PZJ8MBK5QGCk6Ln5P2gFIATOIEZwII0DB6Y5UeAGMcJu7l1+HkYAAAAASUVORK5CYII=)
+    background-repeat: repeat-x
+    background-position: 0 0
+    background-size: auto 100%
+    .main_menu__item
+      text-align: left
+    &.main_menu__item-program > a
+      border-radius: 4px
+      +gradient_top(#7fc317, #62980d) 
+    
+    &.main_menu__item-anounce > a
+      color: $header_phone_color
+
+    &:hover
+      background: $open_menu_item
+      //+gradient_top(#7fc317, #62980d)
+      a
+        //background: transparent
+        color: $white_color
+    &:first-child
+      border-radius: 4px 0 0 4px
+    &:last-child
+      border-radius: 0 4px 4px 0
+
+    &.main_menu__item-wthchildren
+      &:hover
+        background: $open_menu_item
+        &:first-child
+          border-radius: 4px 0 0 0
+        .dropdown-menu
+          display: block
+          +_animation(hinge_in, 300ms ease-in-out)
+    & > a
+      padding: 8px 21px
+      display: inline-block
+      .badge
+        height: 20px
+        line-height: 20px
+        width: 20px
+        padding: 0 2px
+        border-radius: 20px
+        display: inline-block
+        vertical-align: middle
+        color: $white_color
+        text-align: center
+        font-size: 0.875em
+        +gradient_top(#7ec116, #5c900e)
+
+    &.main_menu__item-wthchildren
+      > a
+        padding-right: 31px
+      &.main_menu__item-catalog > a
+        padding-right: 30px
+    &.main_menu__item-catalog > a
+      color: $main-bgcolor
+      padding: 5px 20px
+      border: 1px solid $main-bgcolor
+      border-radius: $border-radius-main
+      &:hover
+        color: lighten($main-bgcolor,10)
+        border-color: lighten($main-bgcolor,10)
+    &.active
+      +gradient_top(#7fc317, #62980d)
+      a 
+        background: transparent
+    &.open
+      background: $open_menu_item
+      &:first-child
+        border-radius: 4px 0 0 0
+      &:last-child
+        border-radius: 0 4px 0 0
+      a
+        color: $white_color
+    &.more
+      width: 50px
+      padding: 10px
+      cursor: pointer
+      line-height: 1
+      border-radius: 0 4px 4px 0
+      .more-btn
+        display: inline-block
+        margin: 8px 0
+        vertical-align: middle
+        width: 30px
+        height: 19px
+        background: url('/media/images/menu.png') no-repeat 0 0
+
+  .watch-state
+    .main_menu__item
+      &:last-child
+        border-radius: 0
+
+  ul.dropdown-menu
+    left: 0
+    width: 255px
+    background: $open_menu_item
+    text-transform: initial
+    padding: 7px 0
+    box-shadow: none
+    margin: 0
+    border: 0
+    font-family: $primary-font-family
+
+    //    @include box-shadow(0 -2px 14px rgba(0,0,0,.1));
+    transition: transform 200ms ease-in-out
+    transform-origin: 50% 0
+
+    border-radius: 0px 4px 4px 4px
+
+    li, .main_menu__item
+      padding: 7px 12px
+      line-height: 1
+
+      a
+        font-size: 13px
+        line-height: 14px
+        letter-spacing: 0.02em
+        color: $white_color
+        word-wrap: break-word
+        white-space: normal
+        text-decoration: none
+        border-bottom: 1px solid rgba($white_color, .5)
+        display: inline
+        padding: 0
+        background: transparent !important
+        font-family: $primary-font-family
+
+        &:hover,
+        &:focus
+          color: $link-color
+          text-decoration: none
+          outline: 0
+          border-bottom-color: transparent
+
+      &.active
+        a
+          border-bottom-color: transparent
+
+    .divider
+      background-color: lighten($main-bgcolor, 20)
+      display: none
+
+  .caret
+    display: block
+    float: left
+    position: absolute
+    top: 50%
+    right: 24px
+    margin-top: -3px
+    cursor: pointer
+
+    &:after
+      content: ''
+      position: absolute
+      left: 1px
+      top: 0
+      border-top: 7px solid $breadcrumb_divider_color
+      border-left: 7px solid transparent
+      border-right: 7px solid transparent
+
+.more
+  &.is-hidden
+    display: none
+
+  &.open, &:hover
+    .more-btn
+      background-position: 0 -19px !important
+    .dropdown-menu
+      left: auto
+      right: 0
+      border-radius: 4px 0 4px 4px
+      +_animation(hinge_in, 300ms ease-in-out)
+      li
+        background: transparent
+        width: 100%
+  &:hover
+    background: $open_menu_item !important
+    border-radius: 0 4px 0 0 !important
+    .dropdown-menu
+      display: block

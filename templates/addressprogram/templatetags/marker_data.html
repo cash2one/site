@@ -1,0 +1,8 @@
+{% load thumbnail %}
+<div class="map-overlay-window">
+    {{ marker.address|safe }}
+    {% thumbnail marker.get_primary_image.file "160x110" crop="center" upscale=False quality=100 as im %}
+        <img src="{{ im.url }}" alt="{{ im.name }}">
+    {% endthumbnail %}
+    <a href="{{ marker.get_absolute_url }}" class="btn btn-green btn-size-4">Подробнее</a>
+</div>

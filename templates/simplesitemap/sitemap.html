@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>{% load  l10n %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for item in items %}
+        <url>
+            <loc>{{ host }}{{ item.get_absolute_url }}</loc>
+            {% if not item.lastmod_disable %}{% if item.lastmod_use_manual %}<lastmod>{{ item.lastmod_manual|date:"Y-m-d" }}</lastmod>{% else %}<lastmod>{{ item.lastmod_auto|date:"Y-m-d" }}</lastmod>{% endif %}{% endif %}
+            {% if not item.changefreq_disable %}<changefreq>{{ item.changefreq }}</changefreq>{% endif %}
+            {% if not item.priority_disable %}<priority>{{ item.get_priority }}</priority>{% endif %}
+        </url>
+    {% endfor %}
+</urlset>

@@ -1,0 +1,432 @@
+.ui-helper-hidden
+  display: none
+
+.ui-helper-hidden-accessible
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
+
+.ui-helper-reset
+  margin: 0
+  padding: 0
+  border: 0
+  outline: 0
+  line-height: 1.3
+  text-decoration: none
+  font-size: 100%
+  list-style: none
+
+.ui-helper-clearfix
+  &:before, &:after
+    content: ""
+    display: table
+    border-collapse: collapse
+  &:after
+    clear: both
+
+.ui-helper-zfix
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  position: absolute
+  opacity: 0
+
+.ui-front
+  z-index: 100
+
+.ui-state-disabled
+  cursor: default !important
+  pointer-events: none
+
+
+
+.ui-icon
+  display: inline-block
+  vertical-align: middle
+  position: relative
+  text-indent: -99999px
+  overflow: hidden
+  background-repeat: no-repeat
+
+
+.ui-widget-icon-block
+  left: 50%
+  margin-left: -8px
+  display: block
+
+
+.ui-widget-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+.ui-datepicker
+  width: 17.813em
+  padding: 0.813em
+  display: none
+
+  &:before, &:after
+    content: ""
+    position: absolute
+    display: block
+    width: 0
+    height: 0
+
+  &:before
+    z-index: 2
+    left: 25px
+    bottom: -6px
+    border-left: 6px solid transparent
+    border-right: 6px solid transparent
+    border-top: 6px solid $white_color
+
+  &:after
+    z-index: 1
+    left: 24px
+    bottom: -7px
+    border-left: 7px solid transparent
+    border-right: 7px solid transparent
+    border-top: 7px solid #ddd
+
+  &-header
+    position: relative
+    padding: 0.188em 0 0.813em
+    border-bottom: 0.063em solid #e0e0e0
+
+  &-prev, &-next
+    position: absolute
+    top: 0.188em
+    width: 1.250em
+    height: 1.250em
+
+    &.ui-state-hover
+      background: transparent !important
+      border: 0 !important
+
+    span
+      display: block
+      position: absolute
+      right: 0
+      top: 50%
+      margin-top: -8px
+      width: 0
+      height: 0
+      border-top: 8px solid transparent
+      border-bottom: 8px solid transparent
+
+  &-prev-hover, &-next-hover
+    top: 0.188em
+
+  &-prev
+    left: 1.563em
+    span
+      border-right: 11px solid $header_phone_color
+    &:active
+      span
+        border-right: 11px solid $pagination_active_color
+
+  &-next
+    right: 1.563em
+    span
+      border-left: 11px solid $header_phone_color
+    &:active
+      span
+        border-left: 11px solid $pagination_active_color
+   
+  &-prev-hover
+    left: 1.563em
+    span
+      border-right: 11px solid $pagination_hover_color
+
+  &-next-hover
+    right: 1.563em
+    span
+      border-left: 11px solid $pagination_hover_color
+ 
+  &-title
+    margin: 0 2.813em
+    line-height: 1
+    text-align: center
+    font-size: 1.188em
+
+    select
+      font-size: 1em
+      margin: 1px 0
+      &.ui-datepicker-month, &.ui-datepicker-year
+        width: 45%
+  
+  table
+    width: 100%
+    font-size: 0.875em
+    border-collapse: collapse
+    margin: 0.357em 0 0
+
+  th
+    padding: 0
+    text-align: center
+    font-weight: normal
+    border: 0
+    span
+      display: block
+      padding: 0.571em
+      position: relative
+      line-height: 1
+      &:before
+        content: ""
+        position: absolute
+        right: -1px
+        top: 5px
+        width: 1px
+        height: 19px
+        background: #e0e0e0
+    &:last-child
+      span:before
+        display: none
+  
+  td
+    border: 0
+    padding: 0
+    
+    span, a
+      display: block
+      padding: 0.571em
+      line-height: 1
+      text-align: center
+      text-decoration: none
+      position: relative
+      margin-right: 1px
+      margin-top: 1px
+      &.ui-state-hover
+        color: $white_color !important
+        background: $breadcrumb_link_color !important
+      &.ui-state-active
+        color: $white_color !important
+        background: $pagination_active_color !important
+      &.ui-state-highlight
+        background: transparent
+      &:before
+        content: ""
+        position: absolute
+        z-index: 10
+        right: -1px
+        top: 5px
+        width: 1px
+        height: 19px
+        background: #e0e0e0
+      &:after
+        content: ""
+        position: absolute
+        z-index: 10
+        left: 5px
+        top: -1px
+        width: 26px
+        height: 1px
+        background: #e0e0e0
+
+    &:last-child
+      span:before, a:before
+        display: none
+  
+  &-buttonpane
+    background-image: none
+    margin: .7em 0 0 0
+    padding: 0 .2em
+    border-left: 0
+    border-right: 0
+    border-bottom: 0
+    
+    button
+      float: right
+      margin: .5em .2em .4em
+      cursor: pointer
+      padding: .2em .6em .3em .6em
+      width: auto
+      overflow: visible
+      &.ui-datepicker-current
+        float: left
+
+  .ui-icon
+    display: block
+    text-indent: -99999px
+    overflow: hidden
+    background-repeat: no-repeat
+
+.ui-widget
+  font-size: 1em
+
+  .ui-widget
+    font-size: 1em
+
+  input, select, textarea, button
+    font-size: 1em
+
+  &.ui-widget-content
+    border: 1px solid rgba($form_label_color, .32)
+    box-shadow: 0 0 10px 0 rgba($black_color, .27)
+    z-index: 100 !important
+
+  &-content
+    border: 1px solid #ddd
+    background: #fff
+    color: #414141
+    
+    a
+      color: #414141
+
+  &-header
+    color: #414141
+    
+    a
+      color: #333
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active
+  background: #fff
+  font-weight: normal
+  color: #414141
+
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited,
+a.ui-button,
+a:link.ui-button,
+a:visited.ui-button,
+.ui-button
+  color: #454545
+  text-decoration: none
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-button:hover,
+.ui-button:focus
+  background: #ededed
+  font-weight: normal
+  color: #2b2b2b
+
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited,
+a.ui-button:hover,
+a.ui-button:focus
+  color: #2b2b2b
+  text-decoration: none
+
+
+.ui-visual-focus
+  box-shadow: 0 0 3px 1px rgb(94, 158, 214)
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover
+  background: #007fff
+  font-weight: normal
+  color: #ffffff
+
+.ui-icon-background,
+.ui-state-active .ui-icon-background
+  border: #003eff
+  background-color: #ffffff
+
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited
+  color: #fff
+  text-decoration: none
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight
+  background: $white_color
+
+.ui-state-checked
+  border: 1px solid #dad55e
+  background: #fffa90
+
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a
+  color: #777620
+
+.ui-state-error,
+.ui-widget-content .ui-state-error
+  background: #fddfdf
+  color: #5f3f3f
+
+.ui-state-error a,
+.ui-widget-content .ui-state-error a
+  color: #5f3f3f
+
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text
+  color: #5f3f3f
+
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary
+  font-weight: bold
+
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary
+  opacity: .7
+  font-weight: normal
+
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled
+  color: #e0e0e0
+  background: #f7f7f7
+  span 
+    color: #e0e0e0 !important
+    background: #f7f7f7 !important
+
+
+
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl
+  border-top-left-radius: 3px
+
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr
+  border-top-right-radius: 3px
+
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl
+  border-bottom-left-radius: 3px
+
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br
+  border-bottom-right-radius: 3px
+
+.ui-widget-overlay
+  background: #aaa
+  opacity: .3
+
+.ui-widget-shadow
+  -webkit-box-shadow: 0px 0px 5px #666
+  box-shadow: 0px 0px 5px #666
+

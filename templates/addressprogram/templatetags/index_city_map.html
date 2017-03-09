@@ -1,0 +1,41 @@
+{% if cities %}
+    <div class="program-chel-map-container js-city-map-container">
+
+        <script>
+
+            var index_map_data = [
+                {% for city in cities %}
+                    {
+                        'id': '{{ city.slug }}',
+                        'url': '{{ city.get_absolute_url }}'
+                        {% if city.get_available_constructions %}
+                            ,'links': [
+                            {% for construction in city.get_available_constructions %}
+                                {
+                                    'title': '{{ construction.name }}',
+                                    'url': '{% url 'program:program_list' %}?city={{ city.id }}&adv_type={{ construction.id }}'
+                                },
+                            {% endfor %}
+                        ]
+
+                        {% endif %}
+
+                    },
+                {% endfor %}
+            ];
+        </script>
+
+        <div class="program-chel-map-container">
+            <div class="program-chel-map-clouds">
+                <span class="program-chel-map-cloud program-chel-map-cloud--1" aria-hidden="true"></span>
+                <span class="program-chel-map-cloud program-chel-map-cloud--2" aria-hidden="true"></span>
+                <span class="program-chel-map-cloud program-chel-map-cloud--3" aria-hidden="true"></span>
+                <span class="program-chel-map-cloud program-chel-map-cloud--4" aria-hidden="true"></span>
+                <span class="program-chel-map-cloud program-chel-map-cloud--5" aria-hidden="true"></span>
+                <span class="program-chel-map-cloud program-chel-map-cloud--6" aria-hidden="true"></span>
+                <span class="program-chel-map-cloud program-chel-map-cloud--7" aria-hidden="true"></span>
+            </div>
+            <div class="program-chel-map"></div>
+        </div>
+    </div>
+{% endif %}

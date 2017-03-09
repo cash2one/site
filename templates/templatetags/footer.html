@@ -1,0 +1,47 @@
+{% load flatpages_extras %}{% load addressprogram_extras %}
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-mob-right col-no-left-padding">
+                <div class="footer-menus">
+                    <nav class="footer-menu" role="navigation">
+                        <h2><a href="#">Города</a></h2>
+                        <ul class="menu">
+                            {% get_index_cities %}
+                        </ul>
+                    </nav>
+                    <hr class="footer-menu-hr"/>
+                    <nav class="footer-menu" role="navigation">
+                        {% get_footer_services %}
+                    </nav>
+                    <hr class="footer-menu-hr"/>
+                    <nav class="footer-menu last" role="navigation">
+                        {% get_footer_constructions %}
+                    </nav>
+                    <hr class="footer-menu-hr"/>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 sm-add-pad col-mob-left">
+                <a class="site-footer-logo-link" href="/">
+                    <img src="/media/images/footer-logo.png" alt="Карус"/>
+                </a>
+                <div class="site-footer-copyright">
+                    © 2016 Рекламная группа «КАРУС»
+                </div>
+                <div class="site-footer-info">
+                    <span class="footer-phone">8 351 731-88-88</span>
+                    <div class="caption-footer">время работы с 9:00 до 18:00</div>
+                    <span class="footer-phone">8-800-100-23-24</span>
+                    <div class="caption-footer">для регионов, звонок бесплатный</div>
+                    <a href="mailto:info@karus.ru" class="footer-email">е-mail: info@karus.ru</a>
+                </div>
+                <a class="developer-link" href="http://www.simplemedia.ru/">
+                    <img src="/media/images/simple-logo.png" alt="Simple Media">
+                    Разработка сайта
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>

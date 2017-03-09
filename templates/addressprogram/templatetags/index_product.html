@@ -1,0 +1,22 @@
+<div class="container home-products">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h2 class="home-page-block-title">Продукты:</h2>
+            <div class="home-products-list">
+                {% for product in products %}
+                    <div class="home-products-card js-load-box">
+                        <a class="home-products-card__link" href="{{ product.get_absolute_url }}">
+                            <span class="home-products-card__ico" style="background-image: url('{{ product.icon.url }}');" aria-hidden="true"></span>
+                            <span class="home-products-card__ico--hover" style="background-image: url('{{ product.icon_hover.url }}');" aria-hidden="true"></span>
+                            <span class="home-products-card__ico--active" style="background-image: url('{{ product.icon_active.url }}');" aria-hidden="true"></span>
+                            {{ product.name }}
+                        </a>
+                        <div class="home-products-card__description">
+                            {{ product.short_content }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

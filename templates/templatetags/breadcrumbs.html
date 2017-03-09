@@ -1,0 +1,18 @@
+<div class="breadcrumbs visible-sm visible-md visible-lg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="/" title="Главная страница"> Главная</a></li>
+                    {% for b in breadcrumbs %}
+                        {% if not forloop.last %}
+                            <li><a href="{{ b.url }}" title="{{ b.title }}">{{ b.title }}</a></li>
+                        {% else %}
+                            <li class="active">{{ b.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

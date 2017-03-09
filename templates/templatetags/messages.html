@@ -1,0 +1,11 @@
+{% if messages %}
+    {% include "templatetags/modals/modal_top.html" with modal_id="basicModal" modal_active=True%}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            {% for message in messages %}
+                {{ message|safe }}
+            {% endfor %}
+        </div>
+    </div>
+    {% include "templatetags/modals/modal_bottom.html" %}
+{% endif %}

@@ -1,0 +1,311 @@
+@import variables
+
+.cb
+  clear: both
+
+.cb-10
+  clear: both
+  height: 10px
+
+.cb-40
+  clear: both
+  height: 40px
+
+.cb-55
+  clear: both
+  height: 55px
+
+//Общие свойства для списка товаров и карточки товара
+.product-price
+  +bp-custom($screen-sm-min)
+    text-align: center
+  font-family: $primary-font-family
+  font-weight: 300
+  text-align: left
+  font-size: 24px
+  line-height: 18px
+  letter-spacing: 0
+  margin: 17px 0px 15px
+
+.buy-button
+  .buy-product
+    +bp-custom($screen-sm-min)
+      width: 25%
+
+
+    font-family: $primary-font-family
+    font-weight: 700
+    text-align: left
+    font-size: 13px
+    line-height: 18px
+    letter-spacing: 0
+    text-transform: uppercase
+    background: url("/media/images/backet-red.png") no-repeat 90% center
+    height: 40px
+    width: 100%
+    box-shadow: none
+    outline: none
+    border-left: none
+    border-right: none
+    border-top: 1px solid rgba(53, 53, 53, 0.2)
+    border-bottom: 1px solid rgba(53, 53, 53, 0.2)
+    padding: 10px
+    &:hover
+      color: $main-bgcolor
+      border-top: 1px solid rgba(53, 53, 53, 0.5)
+      border-bottom: 1px solid rgba(53, 53, 53, 0.5)
+
+  .backet
+    position: absolute
+
+//Конец Общие свойства для списка товаров и карточки товара
+
+//Каталог товаров и список товаров
+.catalog
+  h1
+    margin-top: 6px
+    margin-bottom: 15px
+
+  .list-controls
+    font-family: $primary-font-family
+    font-size: 14px
+    line-height: 18px
+    letter-spacing: 0
+    width: 100%
+    padding: 12px 0px
+    margin: 5px 0px 25px
+    text-transform: uppercase
+
+    .list-sort
+      .sort-name
+        .select-sort
+          a
+            text-decoration: none
+
+            &:hover
+              text-decoration: none
+
+          .disabled
+            pointer-events: none
+            cursor: default
+
+            .disabled:hover
+              background: $controls-inactive
+
+          .up, .down
+            padding: 6px 8px
+            float: none
+            border: none
+            margin-left: 13px
+            color: $link-color
+            border-radius: 3px
+
+          .inactive
+            background: $controls-inactive
+
+            &:hover
+              text-decoration: none
+              background: $btn-hover-bgcolor
+              color: $link-color
+
+            &:focus
+              background: none
+
+            &:active
+              background: $btn-focus-bgcolor
+
+          .active
+            background: $main-bgcolor
+
+          .active
+            &:hover
+              border-radius: 3px
+              text-decoration: none
+              background: $btn-hover-bgcolor
+              color: $link-color
+
+            &:focus
+              background: none
+
+            &:active
+              background: $btn-focus-bgcolor
+
+    .list-per-page
+      +bp-custom($screen-sm-max)
+        text-align: left
+        margin-top: 15px
+
+
+      text-align: right
+      padding-right: 6px
+      margin: 0
+
+      span
+        margin-right: 5px
+
+      .num
+        font-family: $primary-font-family
+        line-height: 1.2em
+        color: $secondary-color
+        padding: 6px 8px
+        float: none
+        border: none
+        margin: 0px 2px
+
+        &:hover
+          border-radius: 3px
+          background: none
+          text-decoration: none
+          background: $btn-hover-bgcolor
+          color: $link-color
+
+        &:focus
+          background: none
+
+        &:active
+          background: $btn-focus-bgcolor
+
+      .active
+        background: $main-bgcolor
+        color: $link-color
+        border-radius: 3px
+
+        &:focus
+          color: $secondary-color
+
+  .description, .description p
+    font-family: $second-font-family
+    font-size: 13px
+    line-height: 18px
+    letter-spacing: 0.02em
+
+  .description
+    margin-bottom: 21px
+
+  .products-set
+    .catalog-items-list
+      .catalog-items-img
+        height: 150px
+
+        //overflow: hidden;
+
+      .catalog-subdir-link
+        color: $main-bgcolor
+
+        h2
+          color: $main-bgcolor
+          font-size: 18px
+          line-height: 20px
+          letter-spacing: 0
+          text-align: left
+          margin: 20px 0px
+
+  .catalog-items-list
+    .catalog-product
+      margin-bottom: 45px
+
+      .product-custom-wrapper
+        +bp-custom($screen-md-min)
+          height: 240px
+
+
+        height: 285px
+
+      .product-link
+        color: $main-bgcolor
+
+        .product-image
+          width: 100%
+
+        .product-title
+          +bp-custom($screen-sm-min)
+            text-align: center
+
+
+          color: $main-bgcolor
+          font-size: 18px
+          line-height: 20px
+          letter-spacing: 0
+          text-align: left
+          margin: 20px 0px 5px
+
+      .product-short-desc
+        +bp-custom($screen-sm-min)
+          text-align: center
+
+
+        font-family: $second-font-family
+        color: $secondary-color
+        opacity: 0.5
+        font-size: 12px
+        line-height: 18px
+        letter-spacing: 0.01em
+        text-align: left
+        margin-bottom: 20px
+
+//Конец Каталога товаров и списка товаров
+
+//Карточка товара
+.product-detail
+  h1
+    margin-top: 6px
+    margin-bottom: 20px
+
+  .product-detail-images
+    +bp-custom($screen-md-min)
+      margin-bottom: 15px
+
+  .product-detail-text
+    +bp-custom($screen-md-min)
+      padding: 0px 15px
+
+
+    padding: 0px
+
+  .detail-text-pad
+    +bp-custom($screen-md-min)
+      padding: 0px 15px
+
+
+    padding: 0px 15px 0px 30px
+
+  h2
+    font-family: $primary-font-family
+    font-weight: 300
+    margin: 0px
+    font-size: 28px
+    line-height: 28px
+    letter-spacing: 0
+    margin-bottom: 10px
+
+  .product-description
+    font-family: $second-font-family
+    font-size: 14px
+    line-height: 20px
+    letter-spacing: 0.01em
+    text-align: left
+    margin-bottom: 20px
+
+    p
+      margin-bottom: 22px
+
+  .product-price
+    +bp-custom($screen-sm-min)
+      text-align: left
+
+
+    font-size: 36px
+    margin: 50px 0px 30px
+
+  .buy-button
+    .buy-product
+      +bp-custom($screen-sm-min)
+        width: 25%
+
+
+      width: 155px
+
+.showcase-thumbnail-vertical.inactive
+  background: $controls-inactive !important
+
+//Конец Карточки товара

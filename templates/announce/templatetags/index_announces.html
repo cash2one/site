@@ -1,0 +1,33 @@
+{% if announces %}
+    {% load thumbnail %}
+
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="fake-h1 pull-left">Акции</div>
+        </div>
+        <div class="col-xs-6 all-button">
+            <a class="btn pull-right" href="{% url "announce:announce-list" %}">Все акции</a>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for item in announces %}
+            <div class="col-xs-12 col-sm-6 promotion_item-wrapper">
+                <a href="{{ item.get_absolute_url }}" class="promotion_item clearfix">
+                    <div class="promotion_item__image">
+                        {% if item.got_image %}
+                            {% thumbnail item.image "242x242" crop="center" upscale=False quality=100 as im %}
+                                <img src="{{ im.url }}" alt="{{ item.title }}">
+                            {% endthumbnail %}
+                        {% endif %}
+                    </div>
+
+                    <div class="promotion_item__description">
+                        <p>{{ item.teaser|linebreaksbr }}</p>
+{#                        <div class="btn btn-default btn-xs" role="button">Подробнее</div>#}
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

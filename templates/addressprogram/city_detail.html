@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block header %}
+    {% include "templatetags/header/header.html" with page_url=flatpage.url %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-5 tmce">
+            <h1 class="page-title-city">{{ item.name }}</h1>
+        </div>
+        <div class="col-xs-12 col-sm-7 tmce">
+            <ul class="city-list">
+                {% for one in item_set %}
+                    <li><a href="{{ one.get_absolute_url }}">{{ one.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-sm-12">
+                <script>
+                    var marker_icon_types = {
+                    {% for c in constructions %}
+                        "{{ c.slug|safe }}": "{{ c.marker_icon.url|safe }}",
+                    {% endfor %}
+                    };
+                    var city_marker_data = [
+                        {% for object in geoobjects %}
+                            {% if object.address.coordinates %}
+                            {
+                                "coords": [{{ object.address.coordinates }}],
+                                "type": "{{ object.address.prod.slug }}",
+                                "object_id": {{ object.id }}
+                            },
+                            {% endif %}
+                        {% endfor %}
+                    ];
+                </script>
+
+            {% load main_extras %}
+            <div id="city-map" class="city-map-container" data-use-infowindows="true" data-api-url="{% get_gmaps_url %}"></div>
+
+            <div class="promo-types-list">
+                {% for c in constructions %}
+                    <div class="promo-types-list__row">
+                        <div class="promo-type js-promo-type" data-type="{{ c.slug }}">
+                            <span class="promo-type__ico {{ c.slug }}" aria-hidden="true">
+                                <img class="normal" src="{{ c.marker_icon.url }}">
+                                <img class="active" src="{{ c.marker_icon_active.url }}">
+                            </span>
+                            <span class="promo-type__title">{{ c.name }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 tmce">
+            <div class="city-detail clearfix">
+                <h2 class="city-detail-title">О городе</h2>
+                <div class="city-detail-image"><img src="{{ item.get_image_url }}" alt="Челябинск"/></div>
+                <div class="city-detail-description">
+                    <div class="short-info-list">
+                        {% if item.region %}
+                            <div class="short-info-list__row">
+                                <div class="short-info-list__row-title">Округ:</div>
+                                <div class="short-info-list__row-value">{{ item.region }}</div>
+                            </div>
+                        {% endif %}
+                        {% if item.population %}
+                            <div class="short-info-list__row">
+                                <div class="short-info-list__row-title">Население:</div>
+                                <div class="short-info-list__row-value">{{ item.population }}</div>
+                            </div>
+                        {% endif %}
+                        {% if item.transport %}
+                            <div class="short-info-list__row">
+                                <div class="short-info-list__row-title">Транспорт:</div>
+                                <div class="short-info-list__row-value">{{ item.transport }}</div>
+                            </div>
+                        {% endif %}
+                        {% if item.status %}
+                            <div class="short-info-list__row">
+                                <div class="short-info-list__row-title">Статус:</div>
+                                <div class="short-info-list__row-value">{{ item.status }}</div>
+                            </div>
+                        {% endif %}
+                        {% if item.area %}
+                            <div class="short-info-list__row">
+                                <div class="short-info-list__row-title">Площадь:</div>
+                                <div class="short-info-list__row-value">{{ item.area }}</div>
+                            </div>
+                        {% endif %}
+                        {% if item.distance %}
+                            <div class="short-info-list__row">
+                                <div class="short-info-list__row-title">Расстояние до обл. центра:</div>
+                                <div class="short-info-list__row-value">{{ item.distance }}</div>
+                            </div>
+                        {% endif %}
+                        {% if item.based %}
+                            <div class="short-info-list__row">
+                                <div class="short-info-list__row-title">Основан:</div>
+                                <div class="short-info-list__row-value">{{ item.based }}</div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="city-main-info">
+                        {% if item.description %}
+                            {{ item.description|safe }}
+                        {% endif %}
+                        {% if item.site %}
+                            <p>Сайт города: <a href="{{ item.site }}" target="_blank"
+                                               rel="noopener noreferrer"><strong>{{ item.site }}</strong></a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

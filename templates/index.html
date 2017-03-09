@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo 'index' %}
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+
+{% block main-content %}
+
+    {% load flatpages_extras %}{% load addressprogram_extras %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-5">
+                {% load slider_extras %}{% slider %}
+            </div>
+            <div class="col-xs-12 col-sm-7 visible-md visible-lg visible-sm">
+                {% load addressprogram_extras %}{% index_city_map %}
+            </div>
+        </div>
+    </div>
+
+    {% index_advantages %}
+    {% get_index_product %}
+    <div class="container home-about-text js-load-box">
+        <div class="row">
+            {% get_index_about %}
+        </div>
+    </div>
+
+{% endblock %}

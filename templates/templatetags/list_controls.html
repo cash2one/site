@@ -1,0 +1,26 @@
+<li class="first">Показывать по:</li>
+<li class="{% if per_page == "25" %}active{% endif %}">
+    <a href="{{ page_url }}?per_page=25
+
+            {{ per_page_qs }}{{ filter_qs }}{% comment %}&letter={{ letter }}&city={{ city }}&gid_address={{ query }}{% endcomment %}">25</a>
+</li>
+<li class="{% if per_page == "50" %}active{% endif %}">
+    <a href="{{ page_url }}?per_page=50
+
+            {{ per_page_qs }}{{ filter_qs }}{% comment %}&letter={{ letter }}&city={{ city }}&gid_address={{ query }}{% endcomment %}">50</a>
+</li>
+<li class="{% if per_page == "75" %}active{% endif %}">
+    <a href="{{ page_url }}?per_page=75
+
+            {{ per_page_qs }}{{ filter_qs }}{% comment %}&letter={{ letter }}&city={{ city }}&gid_address={{ query }}{% endcomment %}">75</a>
+</li>
+<li class="{% if per_page == "100" %}active{% endif %}">
+    <a href="{{ page_url }}?per_page=100
+
+            {{ per_page_qs }}{{ filter_qs }}{% comment %}&letter={{ letter }}&city={{ city }}&gid_address={{ query }}{% endcomment %}">100</a>
+</li>
+<li class="{% if show_all == True %}active{% endif %}">
+    <a href="{{ page_url }}?per_page=show_all
+
+            {{ per_page_qs }}{{ filter_qs }}{% comment %}&letter={{ letter }}&city={{ city }}&gid_address={{ query }}{% endcomment %}">Всё</a>
+</li>

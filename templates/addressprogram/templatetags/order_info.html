@@ -1,0 +1,27 @@
+<div class="order-block">
+    <h2 class="order-block__title">Вы выбрали</h2>
+    <div class="order-block__content">
+        <div class="order-info">
+            <div class="order-info__title">Кол-во поверхностей</div>
+            <div class="order-info__content">{{ cart_item_counter }}</div>
+        </div>
+        <div class="order-info">
+            <div class="order-info__title">Суммарная GRP</div>
+            <div class="order-info__content">{{ cart_item_grp }}</div>
+        </div>
+        <div class="order-info">
+            <div class="order-info__title">OTS</div>
+            <div class="order-info__content">{{ cart_item_ots }}</div>
+        </div>
+        <div class="order-info-links">
+            <a href="{% url 'order:clear_cart' %}">Очистить</a>
+            <a href="{% url 'order:order_exel' %}">Сохранить в exel</a>
+            <a href="{% url 'order:get-cart' %}">Оформить</a>
+        </div>
+
+        <button type="submit" name="make_order" value="make_order"
+                class="btn btn-green btn-size-4 visible-md visible-lg">В заказ
+        </button>
+    </div>
+</div>
+{#<a href="{% url 'order:get-cart' %}" class="btn btn-green-still btn-full visible-xs">В заказ</a>#}

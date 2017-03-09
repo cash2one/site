@@ -1,0 +1,14 @@
+<div class="col-xs-12 col-sm-4">
+    {% if last_news %}
+        <div class="fake-h1 pull-left">Новости</div>
+        <div class="all-button clearfix">
+            <a class="btn pull-right" href="{% url "news:news-list" %}">Все новости</a>
+        </div>
+        <ul class="news">
+            {% for item in last_news %}
+                <li><a href="{{ item.get_absolute_url }}" alt="{{ item.title }}">{{ item.title }}</a></li>
+                <li>{{ item.created_at|date:"d M y" }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

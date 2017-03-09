@@ -1,0 +1,3 @@
+{% for one in cities %}
+    <li class="menu__item"><a href="{{ one.get_absolute_url }}">{{ one.name }}</a></li>
+{% endfor %}

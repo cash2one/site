@@ -1,0 +1,225 @@
+@import "../bootstrap/variables"
+@import "variables"
+
+.cart_widget
+  z-index: 1
+  position: fixed
+  display: inline-block
+  right: 0px
+  top: 280px
+  box-sizing: border-box
+  border-radius: $border-radius-main 0 0 $border-radius-main
+  background: $docbody-color
+  height: 60px
+  padding-left: 52px
+  color: $secondary-color
+  font-size: 12px
+  text-transform: uppercase
+  +box-shadow(0 -2px 14px rgba(0, 0, 0, 0.1))
+  +bp-custom($screen-sm)
+    display: none
+  &:before
+    top: 50%
+    left: 27px
+    margin-left: -15px
+    margin-top: -13px
+    content: ""
+    position: absolute
+    background: url("/media/images/icon_cart.png") no-repeat
+    width: 30px
+    height: 27px
+    text-decoration: none
+
+.cart_widget-content
+  overflow: hidden
+  width: 0px
+  height: 60px
+  display: inline-block
+  text-align: center
+  box-sizing: border-box
+  padding: 22px 0px
+  transition: width 200ms ease-in-out
+  white-space: pre
+  span
+    color: $main-bgcolor
+
+.cart_widget-containing
+  &:hover
+    text-decoration: none
+    .cart_widget-content
+      width: 160px
+  &:before
+    background: url("/media/images/icon_cart-active.png") no-repeat
+
+
+.cart-add-message
+  margin: $em 0
+  text-align: center
+  p
+    margin: 22px 0
+  .btn
+    margin: 0
+    +bp-from($screen-sm)
+      width: 209px
+
+.cart_buttonback_wrapper
+  .btn
+    margin-top: 0
+  margin-top: 27px
+  text-align: right
+  +bp-custom($screen-xs-max)
+    margin-top: 0
+    text-align: left
+    margin-bottom: 27px
+
+.cart_buttonissue_wrapper
+  margin-top: -7px
+  .btn
+    margin-top: 0
+  +bp-custom($screen-sm-max)
+    margin-top: 0px
+    text-align: center
+.cart_items
+  background: $contact-form-bg
+  border-radius: 2px
+  padding: 25px 80px 25px
+  box-sizing: border-box
+  +bp-custom($screen-sm-max)
+    padding: 25px 30px 25px
+
+.cart_items-thead
+  padding-bottom: 13px
+
+.cart_items-th
+  font-size: 13px
+  text-align: center
+  text-transform: uppercase
+  font-weight: bold
+
+.cart-items-divider
+  width: 100%
+  border-bottom: 1px solid #d1d1d1
+  margin-bottom: 34px
+
+.cart_item
+  padding-bottom: 40px
+
+.cart_item-image_wrapper
+  a
+    display: inline-block
+    margin-bottom: 15px
+    img
+      max-width: 100%
+  +bp-custom($breakpoint-xss)
+    width: 100%
+    text-align: center
+
+.cart_item-btn_remove
+  display: inline-block
+  padding-left: 40px
+  position: relative
+  font-size: 12px
+  font-family: $second-font-family
+  color: #d1d1d1
+  &:before
+    position: absolute
+    left: 0
+    top: -5px
+    content: ""
+    display: inline-block
+    text-decoration: none
+    width: 25px
+    height: 25px
+    color: $docbody-color
+    background-color: #d1d1d1
+    background-image: url("/media/images/icon_remove.png")
+    background-repeat: no-repeat
+    background-position: center
+    border-radius: $border-radius-main - 2px
+    font-size: 20px
+    font-weight: 700
+    text-align: center
+  &:hover
+    text-decoration: none
+    color: $main-bgcolor
+    &:before
+      background-color: $btn-hover-bgcolor
+  &:active:before
+    background-color: $btn-focus-bgcolor
+
+.cart_item-product_title
+  font-size: 18px
+  font-weight: 300
+  color: $main-bgcolor
+  line-height: 20px
+  margin-bottom: 15px
+  display: block
+
+.cart_item-product_desc
+  font-size: 12px
+  line-height: 18px
+  font-family: $second-font-family
+  color: $secondary-color
+  margin-bottom: 30px
+  +opacity(0.5)
+
+p.cart_item-product_price
+  font-size: 24px
+  font-weight: 300
+  font-family: $primary-font-family
+
+
+.cart_quantity_widget
+  display: inline-block
+  background: $docbody-color
+  border-radius: $border-radius-main - 2px
+  padding: 4px
+  height: 35px
+
+.cart_quantity_widget-button
+  display: inline-block
+  text-decoration: none
+  width: 27px
+  height: 27px
+  color: $docbody-color
+  background-color: $main-bgcolor
+  border-radius: $border-radius-main - 2px
+  background-repeat: no-repeat
+  background-position: center
+  font-size: 20px
+  font-weight: 700
+  text-align: center
+  &.add
+    background-image: url("/media/images/icon_plus.png")
+  &.subtract
+    background-image: url("/media/images/icon_minus.png")
+  &:hover
+    text-decoration: none
+    background-color: $btn-hover-bgcolor
+  &:active
+    background-color: $btn-focus-bgcolor
+
+.cart_quantity_widget-q
+  display: inline-block
+  font-size: 20px
+  font-weight: 300
+  height: 27px
+  padding: 0 13px
+
+p.cart_item-summary-hint
+  display: none
+  +bp-custom($screen-sm)
+    display: block
+    margin: 5px 0px
+
+.cart_item-desc_wrapper
+  +bp-custom($breakpoint-xss)
+    width: 100%
+
+.cart_item-quantity_wrapper, .cart_item-summary_wrapper
+  text-align: center
+  +bp-custom($screen-sm)
+    text-align: left
+  +bp-custom($breakpoint-xss)
+    width: 100%
+    text-align: center

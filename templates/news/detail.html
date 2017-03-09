@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="row">
+        
+
+        <div class="col-xs-12 col-sm-8 col-md-9 tmce">
+            <div class="row">
+                <div class="col-xs-12 news-item tmce">
+                    <h1 class="news-title">{{ item.title }}</h1>
+                    <time class="date" datetime="{{ item.created_at|date:"Y-m-d" }}">{{ item.created_at|date:"d.m.Y" }}</time>
+                    {% if item.got_image %}
+                        <p><img class="news-item__image" src="{{ item.image.url }}" alt="{{ item.title }}"></p>
+                    {% endif %}
+                    <div class="text">{{ item.description|safe }}</div>
+
+
+                    <div class="visible-sm visible-md visible-lg">
+                        <a href="{% url "news:news-list" %}" class="btn btn-green btn-back">К списку новостей</a>
+                    </div>
+                    <div class="visible-xs">
+                        <a href="{% url "news:news-list" %}" class="btn btn-green-still btn-full">К списку новостей</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% include "templatetags/side_menu.html" %}
+    </div>
+    
+{% endblock %}

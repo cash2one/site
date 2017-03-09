@@ -1,0 +1,18 @@
+{% load thumbnail %}
+
+{% for item in announces %}
+    <a href="{{ item.get_absolute_url }}" class="visible-md visible-lg promotion_item clearfix vertical">
+        <div class="promotion_item__image">
+            {% if item.got_image %}
+                {% thumbnail item.image "242x242" crop="center" upscale=False quality=100 as im %}
+                    <img src="{{ im.url }}" alt="{{ item.title }}">
+                {% endthumbnail %}
+            {% endif %}
+        </div>
+
+        <div class="promotion_item__description">
+            <p>{{ item.teaser|linebreaksbr }}</p>
+{#            <div class="btn btn-default btn-xs" role="button">Подробнее</div>#}
+        </div>
+    </a>
+{% endfor %}

@@ -1,0 +1,27 @@
+{% load flatpages_extras %}
+{% load placeholder %}
+<div class="mobile_navbar_backdrop" id="navbar_backdrop"></div>
+<div id="navbar" class="mobile_navigation">
+    {% get_mobile_top_menu page_url %}
+    
+
+    <div class="mobile-info">
+        <div class="mobile-info__row">
+            <div class="header_phones-item">
+                {% placeholder "header_phone1" %}
+                <div class="caption-phone">многоканальный</div>
+            </div>
+        </div>
+        <div class="mobile-info__row">
+            <div class="header_phones-item secondary">
+                {% placeholder "header_phone2" %}
+                <div class="caption-phone">для регионов, звонок бесплатный</div>
+            </div>
+        </div>
+        <div class="mobile-info__row">
+            <a href="{% url "feedback:process-feedback" %}" onclick="YaHelper.reachgoal('{{ config.YA_FEEDBACK }}')" class="btn btn-green btn-size-1 show_feedback_form">Обратный звонок</a>
+        </div>
+        
+    </div>
+
+</div>

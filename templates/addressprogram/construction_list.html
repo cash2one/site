@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block header %}
+    {% include "templatetags/header/header.html" with page_url=flatpage.url %}
+{% endblock %}
+
+{% block main-content %}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="home-page-block-title">Продукты:</h1>
+            <div class="home-products-list">
+                {% for product in products %}
+                    <div class="home-products-card js-load-box">
+                        <a class="home-products-card__link" href="{{ product.get_absolute_url }}">
+                            <span class="home-products-card__ico" style="background-image: url('{{ product.icon.url }}');" aria-hidden="true"></span>
+                            <span class="home-products-card__ico--hover" style="background-image: url('{{ product.icon_hover.url }}');" aria-hidden="true"></span>
+                            <span class="home-products-card__ico--active" style="background-image: url('{{ product.icon_active.url }}');" aria-hidden="true"></span>
+                            {{ product.name }}
+                        </a>
+                        <div class="home-products-card__description">
+                            {{ product.short_content }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            {{ flatpage.content|safe }}
+        </div>
+    </div>
+
+{% endblock %}

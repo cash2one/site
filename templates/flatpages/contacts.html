@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block header %}
+    {% include "templatetags/header/header.html" with page_url=flatpage.url %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="row">
+        <div class="col-xs-12 tmce clearfix">
+            <h1>Контакты</h1>
+        </div>
+        {% load placeholder %}
+        
+        <div class="col-xs-12 col-sm-8 col-mob-right">
+           {% include "templatetags/company_map.html" %}
+        </div>  
+        <div class="col-xs-12 col-sm-4 tmce col-mob-left">
+            {{ flatpage.content|safe }}
+            <a href="{% url "feedback:process-feedback" %}" class="btn btn-green btn-size-1 show_feedback_form">Отправить письмо</a>
+        </div>
+
+        
+        <div class="col-xs-12 col-sm-12">
+            <hr class="simple-divider" />
+            <div class="managers">
+               {% for item in manager %}
+                    <div class="managers__card">
+                       <img class="managers__card-image" src="{{ item.get_image_url }}" alt="{{ item.full_name }}" />
+                       <div class="managers__card-info tmce">
+                           <p><strong>{{ item.full_name }}</strong><br/>
+                           {{ item.position }}<br/>
+                           <a href="mailto:{{ item.email }}">{{ item.email }}</a>
+                       </div>
+                        <a data-manager-id="{{ item.id }}" href="{% url "feedback:feedback-manager" %}"
+                           class="btn btn-green btn-size-4 show_manager_form">Написать</a>
+                    </div>
+               {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

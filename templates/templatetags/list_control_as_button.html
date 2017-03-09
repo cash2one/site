@@ -1,0 +1,16 @@
+<li class="first">Показывать по:</li>
+<li class="{% if per_page == "25" %}active{% endif %}">
+    <button type="submit" name="per_page" value="25">25</button>
+</li>
+<li class="{% if per_page == "50" %}active{% endif %}">
+    <button type="submit" name="per_page" value="50">50</button>
+</li>
+<li class="{% if per_page == "75" %}active{% endif %}">
+    <button type="submit" name="per_page" value="75">75</button>
+</li>
+<li class="{% if per_page == "100" %}active{% endif %}">
+    <button type="submit" name="per_page" value="100">100</button>
+</li>
+<li class="{% if qs == "per_page=True" %}active{% endif %}">
+    <button type="submit" name="per_page" value="True">Всё</button>
+</li>

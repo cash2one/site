@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block header %}
+    {% include "templatetags/header/header.html" %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="row">
+        {% include "templatetags/side_menu.html" %}
+
+        <div class="col-xs-12 col-sm-8 col-md-9">
+            <div class="row">
+                <div class="col-xs-12 tmce">
+                    {{ flatpage.content|safe }}
+                </div>
+                <div class="col-xs-12">
+                    {# TODO: выяснить, зачем этот блок и чё с ним делать, йопт #}
+{#                    {% include "flatpages/templatetags/uploaded_files.html" %}#}
+{#                    {% load feedback_extras %}{% feedback_form %}#}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+{% endblock %}

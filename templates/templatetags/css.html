@@ -1,0 +1,20 @@
+{% load compress %}
+
+{% compress js inline %}
+    <script type="text/javascript" src="/media/js/vendor/fontfaceload.js"></script>
+{% endcompress %}
+
+{% compress css inline %}
+   <link rel="stylesheet" href="/media/css/main-menu.css">
+{% endcompress %}
+
+{% compress css %}
+    <link rel="stylesheet" media="screen" href="/media/css/bootstrap.css" charset="utf-8"/>
+    <link rel="stylesheet" media="screen" href="/media/css/corporate.css" charset="utf-8"/>
+    <link rel="stylesheet" media="screen" href="/media/css/font-awesome.css" charset="utf-8"/>
+    <link rel="stylesheet" media="print" href="/media/css/print.css" charset="utf-8"/>
+    <link rel="stylesheet" href="/media/css/owl-carousel/owl.carousel.css">
+{% endcompress %}
+    <link rel="stylesheet" href="/media/photoswipe/photoswipe.css">
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>

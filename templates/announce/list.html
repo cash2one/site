@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="row">
+        
+
+        <div class="col-xs-12 col-sm-8 col-md-9">
+            <div class="row">
+                <div class="col-xs-12 tmce">
+                    <h1>Акции</h1>
+                    {% if flatpage %}{{ flatpage.content|safe }}{% endif %}
+                </div>
+            </div>
+
+            <div>
+            {% for item in items_list %}
+                <div class="media media_news">
+                    <div class="media-body">
+                        <a href="{{ item.get_absolute_url }}"><h4 class="media-heading">{{ item.title }}</h4></a>
+                        <time class="date" datetime="{{ item.created_at|date:"Y-m-d" }}">{{ item.created_at|date:"d.m.Y" }}</time>
+                        <a class="preview" href="{{ item.get_absolute_url }}" title="{{ item.title }}">
+                            {% if item.got_image %}
+                                {% thumbnail item.image "696x212" upscale=False quality=100 as im %}
+                                    <img src="{{ im.url }}" alt="{{ item.title }}">
+                                {% endthumbnail %}
+                            {% else %}
+                                <img class="media-object" src="/media/img/announce_default_image.png" alt="">
+                            {% endif %}
+                        </a>
+                        <p class="media-description">{{ item.teaser|linebreaksbr }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
+            {% include "templatetags/pagination.html" %}
+        </div>
+
+        {% include "templatetags/side_menu.html" %}
+    </div>
+   
+{% endblock %}

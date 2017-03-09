@@ -1,0 +1,31 @@
+{% load placeholder %}
+<div class="header-wrapper">
+    <div class="container">
+        <div class="row page-header">
+            <div class="col-xs-12 col-sm-9 header-info">
+                <table>
+                    <tr>
+                        <td class="logo">
+                            <a href="/"><img src="/media/images/logo.png" alt="logo"></a>
+                        </td>
+                        <td class="m-hidden">
+                            <div class="header_phones-item">
+                                {% placeholder "header_phone1" %}
+                                <div class="caption-phone">многоканальный</div>
+                            </div>
+                            <div class="header_phones-item secondary">
+                                {% placeholder "header_phone2" %}
+                                <div class="caption-phone">для регионов, звонок бесплатный</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="col-sm-3 feedback visible-sm visible-md visible-lg">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+{% load humanize %}
+
+<h1>Заказ номер: {{ order.id }}</h1>
+
+{% if error_text %}
+    <h1 style="color: red;">{{ error_text }}</h1>
+{% endif %}
+
+<p><strong>Покупатель:</strong></p>
+<p>
+    Ф.И.О.: {{ order.full_name }}<br/>
+    {% if order.company %}Компания: {{ order.company }}{% endif %}<br/>
+    Email: {{ order.email }}<br/>
+    Телефон: {{ order.phone }}
+</p>
+
+<p><strong>Даты размещения:</strong></p>
+<p>
+    Дата начала размещения: {{ order.date_start }}<br>
+    Дата окончания размещения: {{ order.date_end }}
+</p>
+
+<p><strong>Список покупок:</strong></p>
+{% for order_item in order.orderitem_set.all %}
+    <p>
+        Паспорт: {{ order_item.passport.address.city }}, {{ order_item.passport_name }}<br/>
+        GID: {{ order_item.passport.gid }}<br/>
+        Кол-во: {{ order_item.quantity }}<br/>
+    </p>
+{% endfor %}

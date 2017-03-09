@@ -1,0 +1,8 @@
+{# TODO: убрать inline-css #}
+<div class="modal simple-modal {% if modal_active %}active{% endif %}" id="{{ modal_id }}" aria-labelledby="{{ modal_id }}">
+    <a href="{{ request.META.PATH_INFO }}" data='close-modal' class="modal-backdrop fade in"></a>
+    <div data='modal-content' class="modal-dialog">
+        <div class="modal-content">
+            <div class="row modal-body">
+                <a data='close-modal' href="{{ request.META.PATH_INFO }}" class="close btn-close" >&times;</a>
+                <div class="col-xs-12 modal-pad tmce">

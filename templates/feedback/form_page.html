@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load feedback_extras %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="row">
+        {% include "templatetags/side_menu.html" %}
+        <div class="col-xs-12 col-sm-8 col-md-9 tmce">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Обратная связь</h1>
+                </div>
+                <div class="col-xs-12">
+                    {% modal_form feedback_form %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

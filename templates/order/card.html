@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="row">
+        {% if item_list %}
+            <div class="col-xs-12 col-sm-12 tmce">
+                <h1>Ваш заказ</h1>
+            </div>
+
+            <div class="col-xs-12 col-sm-12">
+                <div class="table-responsive">
+                    <table class="table-data table-data-detail">
+                        <thead>
+                        <tr>
+                            <th>Тип</th>
+                            <th>Адрес</th>
+                            <th>Сторона</th>
+                            <th>Подсветка</th>
+                            <th>GID</th>
+                            <th>Город</th>
+                            <th>GRP</th>
+                            <th><span class="ico-delete" aria-hidden="true"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in item_list %}
+                            <tr>
+                                <td>
+                                    {{ item.product.type }}
+                                </td>
+                                <td>
+                                    {{ item.product.address }}
+                                </td>
+                                <td>{{ item.product.side }}</td>
+                                <td>{% if item.product.backlight == 'yes' %}Да{% else %}Нет{% endif %}</td>
+                                <td>{{ item.product.gid }}</td>
+                                <td>{{ item.product.address.city }}</td>
+                                <td>{{ item.product.grp }}</td>
+                                <td>
+                                    <a type="button" href="{% url 'order:remove_from_cart' item.id %}" class="btn btn-delete"
+                                       title="Удалить" name="{{ item.product.id }}" value="remove"></a>
+                                    {#                            <button type="button" class="btn btn-delete" title="Удалить" name="{{ item.product.id }}" value="remove"></button>#}
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td>Тип</td>
+                            <td>Адрес</td>
+                            <td>Сторона</td>
+                            <td>Подсветка</td>
+                            <td>GID</td>
+                            <td>Город</td>
+                            <td>GRP</td>
+                            <td><span class="ico-delete" aria-hidden="true"></span></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12">
+                <div class="visible-md visible-lg">
+                    <nav class="pagination_container full">
+                        {% include "templatetags/pagination.html" %}
+
+                        <span class="pagination_container-sep" aria-hidden="true"></span>
+                        <ul class="pagination pagination-count text-center">
+                            {% include 'templatetags/list_controls.html' %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12">
+
+                <!-- on desktop -->
+                <div class="order-block-form">
+                    <h2>Оформление заказа</h2>
+                    <form class="order-form" method="post" action="{% url 'order:checkout' %}">
+                        {% csrf_token %}
+                        <div class="form-fieldset">
+                            <div class="form-group">
+                                <label for="full_name">ФИО *</label>
+                                <input class="form-control {% if form.full_name.errors %}has-error{% endif %}" type="text" id="person" name="full_name" value="{% if form.full_name.value %}{{ form.full_name.value }}{% endif %}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Компания</label>
+                                <input class="form-control {% if form.company.errors %}has-error{% endif %}" type="text" id="company" name="company" value="{% if form.company.value %}{{ form.company.value }}{% endif %}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон *</label>
+                                <input class="form-control {% if form.phone.errors %}has-error{% endif %}" type="text" id="phone" name="phone" value="{% if form.phone.value %}{{ form.phone.value }}{% endif %}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input class="form-control {% if form.email.errors %}has-error{% endif %}" type="email" id="email" name="email" value="{% if form.email.value %}{{ form.email.value }}{% endif %}"/>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-period">
+                            <label>Выберите интересующий Вас период размещения</label>
+                            с <input class="form-control js-input-date {% if form.date_start.errors %}has-error{% endif %}" type="text" name="date_start" value="{% if form.date_start.value %}{{ form.date_start.value }}{% endif %}"/>
+                            по <input class="form-control js-input-date {% if form.date_end.errors %}has-error{% endif %}" type="text" name="date_end" value="{% if form.date_end.value %}{{ form.date_end.value }}{% endif %}"/>
+                        </div>
+                        <div class="form-group form-group-submit">
+                            <button type="submit" class="btn btn-green btn-size-1">Отправить</button>
+                        </div>
+                        <div class="form-group form-group-remark">
+                            * - Поля, обязательные для заполнения
+                        </div>
+                    </form>
+                </div>
+
+{#                <!-- on mobile -->#}
+{#                <form class="order-form visible-xs" method="post" method="post" action="{% url 'order:checkout' %}">#}
+{#                    {% csrf_token %}#}
+{#                    <div class="order-block-form order-block-form--mobile">#}
+{#                        <h2>Оформление заказа</h2>#}
+{##}
+{#                        <div class="form-fieldset">#}
+{#                            <div class="form-group">#}
+{#                                <label for="person">ФИО *</label>#}
+{#                                <input class="form-control" type="text" id="person" name="person" />#}
+{#                            </div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="company">Компания</label>#}
+{#                                <input class="form-control" type="text" id="company" name="company" />#}
+{#                            </div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="phone">Телефон *</label>#}
+{#                                <input class="form-control" type="text" id="phone" name="phone" />#}
+{#                            </div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="email">E-mail *</label>#}
+{#                                <input class="form-control" type="email" id="email" name="email" />#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-group form-group-period">#}
+{#                            <label>Желаемый период размещения*</label>#}
+{#                            <input class="form-control js-input-date" type="text" name="date-start" />#}
+{#                        </div>#}
+{#                        <div class="form-group form-group-remark">#}
+{#                            * - Поля, обязательные для заполнения#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group form-group-submit">#}
+{#                        <button type="submit" class="btn btn-green-still btn-full">Отправить</button>#}
+{#                    </div>#}
+{#                </form>#}
+
+            </div>
+        {% else %}
+            <div class="col-xs-12 col-sm-12 tmce">
+                <h1>В заказе нет позиций</h1>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block order_floating_block %}{% endblock %}

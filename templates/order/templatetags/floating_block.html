@@ -1,0 +1,33 @@
+{% if cart_item_counter %}
+<div class="order-float-info visible-sm visible-lg">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="order-block order-block-float">
+                    <h2 class="order-block__title">Ваш заказ:</h2>
+                    <div class="order-block__content">
+                        <div class="order-info">
+                            <div class="order-info__title">Кол-во поверхностей</div>
+                            <div class="order-info__content">{{ cart_item_counter }}</div>
+                        </div>
+                        <div class="order-info">
+                            <div class="order-info__title">Суммарная GRP</div>
+                            <div class="order-info__content">{{ cart_item_grp }}</div>
+                        </div>
+                        <div class="order-info">
+                            <div class="order-info__title">OTS</div>
+                            <div class="order-info__content">{{ cart_item_ots }}</div>
+                        </div>
+
+                        <div class="order-info-links">
+{#                            <a href="#">Подробнее</a>#}
+                        </div>
+
+                        <a href="{% url 'order:get-cart' %}" class="btn btn-green btn-size-4">Оформить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

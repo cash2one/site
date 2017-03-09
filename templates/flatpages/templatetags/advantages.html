@@ -1,0 +1,29 @@
+{% load thumbnail %}{% load flatpages_extras %}
+{% if items %}
+<div class="advantages">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h2 class="home-page-block-title home-page-block-title--white">Почему мы?</h2>
+                <div class="row">
+                    {% for item in items %}
+                    <div class="col-xs-12 col-sm-3 text-center advantage-column js-load-box">
+                        <div class="advantage">
+                            {% if item.got_image %}
+                                {% thumbnail item.image "128x128" crop="center" format="PNG" upscale=False quality=100 as im %}
+                                    <div class="advantage-ico"><img src="{{ im.url  }}" alt=""></div>
+                                {% endthumbnail %}
+                            {% endif %}
+                            <p class="advantage-description">{{ item.content|linebreaksbr }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="col-xs-12 col-sm-12 tmce advantages-text js-load-box">
+                        <p>{% get_index_text %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,28 @@
+$font_media_url: '/media/fonts/Gotham Pro/'
+
+=mk_src($f)
+  src: url('#{$font_media_url}#{$f}.eot?') format('eot'), url('#{$font_media_url}#{$f}.otf') format('opentype'), url('#{$font_media_url}#{$f}.woff') format('woff'), url('#{$font_media_url}#{$f}.ttf')  format('truetype'), url('#{$font_media_url}#{$f}.svg##{$f}') format('svg')
+
+@font-face
+  font-family: 'GothamProRegular'
+  font-style: normal
+  font-weight: normal
+  +mk_src('GothamPro')
+
+@font-face
+  font-family: 'GothamProMedium'
+  font-style: normal
+  font-weight: normal
+  +mk_src('GothamPro-Medium')
+
+@font-face
+  font-family: 'GothamProBold'
+  font-style: normal
+  font-weight: normal
+  +mk_src('GothamPro-Bold')
+
+@font-face
+  font-family: 'GothamProLight'
+  font-style: normal
+  font-weight: normal
+  +mk_src('GothamPro-Light')

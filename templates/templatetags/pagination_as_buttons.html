@@ -1,0 +1,54 @@
+{% if items.paginator.page_range|length > 1 %}
+<div class="row">
+    <div class="col-xs-12">
+        <nav class="pagination_container">
+            <ul class="pagination pagination-buttons text-center">
+                {# if items.has_previous #}
+                    <!--li>
+                        <button name="page" value="{# items.previous_page_number #}" type="submit" aria-label="Previous" >
+                            <span class="pagination-label" aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+                            <span class="visible-sm-inline visible-md-inline visible-lg-inline">В начало</span>
+                        </button>
+                    </li-->
+                {# endif #}
+
+                {% if items.range_page|first > 1 %}
+                    <!--li class="{# if items.number == 1 #}active{# endif #}">
+                        <button name="page" value="1" type="submit">1</button>
+                    </li-->
+
+                    <li>
+                        <button name="page" value="1" type="submit">
+                            <span class="pagination-label" aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+                            <span class="visible-sm-inline visible-md-inline visible-lg-inline">В начало</span>
+                        </button>
+                    </li>
+                {% endif %}
+
+                {% for page_num in items.range_page %}
+                    <li class="{% if page_num == items.number %}active{% endif %}">
+                        <button name="page" value="{{ page_num }}" type="submit">{{ page_num }}</button>
+                    </li>
+                {% endfor %}
+
+                {% if items.range_page|last < items.paginator.num_pages  %}
+                    <!--li class="{# if items.number == items.paginator.num_pages #}active{# endif #}">
+                        <button name="page" value="{# items.paginator.num_pages #}" type="submit">{# items.paginator.num_pages #}</button>
+                    </li-->
+                    <li>
+                        <button name="page" value="{{ items.paginator.num_pages }}" type="submit">     <span class="visible-sm-inline visible-md-inline visible-lg-inline">В конец</span><span class="pagination-label" aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                        </button>
+                    </li>
+                {% endif %}
+
+                {# if items.has_next #}
+                    <!--li>
+                        <button aria-label="Next" name="page" value="{# items.next_page_number #}" type="submit">{# page_num #}<span class="visible-sm-inline visible-md-inline visible-lg-inline">В конец</span><span class="pagination-label" aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                        </button>
+                    </li-->
+                {# endif #}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endif %}

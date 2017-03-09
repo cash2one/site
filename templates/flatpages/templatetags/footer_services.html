@@ -1,0 +1,6 @@
+<h2><a href="{{ parent.get_absolute_url }}">{{ parent.title }}</a></h2>
+<ul class="menu">
+    {% for service in services %}
+        <li class="menu__item"><a href="{{ service.get_absolute_url }}">{{ service.title }}</a></li>
+    {% endfor %}
+</ul>

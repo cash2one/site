@@ -1,0 +1,208 @@
+@import variables
+@import mixins
+@import ../bootstrap/variables
+
+.contact-info
+  margin-bottom: 20px
+  letter-spacing: 1px
+
+  +bp-custom($screen-xs-max)
+    text-align: center
+
+
+  h3
+    font-family: $primary-font-family
+    font-weight: 300
+    font-size: 26px
+    line-height: 24px
+    letter-spacing: 0
+    margin-top: 0px
+
+  h4
+    color: $main-bgcolor
+    text-transform: uppercase
+    font-size: 14px
+    line-height: 18px
+    margin: 0px 0px 10px
+
+  p
+    font-size: 14px
+    font-family: $second-font-family
+    line-height: 18px
+    letter-spacing: 0
+
+  .contact-info-item
+    a
+      text-decoration: underline
+
+      &:hover
+        text-decoration: none
+        color: $link-news-color
+
+.company-map
+  position: relative
+  width: 100%
+  transition: height 600ms ease-in-out
+  background: $btn-inactive-bgcolor
+
+  &.open
+    height: 410px
+
+  &.active
+    height: 410px
+
+  &.loading:after
+    position: absolute
+    display: inline-block
+    left: 50%
+    top: 50%
+    margin-left: -25px
+    margin-top: -25px
+    content: "\f110"
+    color: $main-bgcolor
+    -webkit-animation: fa-spin 2s infinite linear
+    animation: fa-spin 2s infinite linear
+    font: normal normal normal 50px/1 FontAwesome
+
+.marker-data
+
+.marker-loading:after
+  content: "\f110"
+  color: $main-bgcolor
+  -webkit-animation: fa-spin 2s infinite linear
+  animation: fa-spin 2s infinite linear
+  font: normal normal normal 20px/1 FontAwesome
+
+.footer
+  font-size: 13px
+  letter-spacing: 0
+  position: relative
+  font-family: $second-font-family
+  padding-bottom: 10px
+  padding-top: 60px
+
+  +bp-custom($screen-xs-max)
+    text-align: center
+
+
+  a
+    text-decoration: underline
+    color: $main-bgcolor
+
+    &:hover
+      text-decoration: none
+      color: $main-bgcolor
+
+  .develop
+    +bp-custom($screen-xs-max)
+      padding-bottom: 60px
+
+  .scroll-top
+    width: 60px
+    height: 57px
+    background-color: $main-bgcolor
+    position: absolute
+    left: 50%
+    bottom: 0%
+    margin-left: -30px
+    border-top-left-radius: $border-radius-main
+    border-top-right-radius: $border-radius-main
+
+    .fa-angle-up
+      color: $link-color
+      padding: 7px 17px 0px
+      font-size: 40px
+  .site-footer-logo-link
+    display: block
+    text-decoration: none
+  .site-footer-copyright
+    color: $white_color
+    margin-top: 10px
+    font-size: 13px
+  .site-footer-info
+    margin-top: 30px
+  .footer-phone, .footer-email
+    color: $header_phone_color
+    font-family: $medium-font-family
+  .footer-phone
+    font-size: 18px
+    margin-bottom: 10px
+  .footer-email
+    font-size: 14px
+    text-decoration: none
+    &:hover
+      color: $header_phone_color
+  .developer-link
+    display: block
+    margin-top: 60px
+    color: rgba($white_color, .5)
+    font-size: 13px
+    &:hover
+      color: rgba($white_color, .5)
+      text-decoration: none
+    img
+      display: block
+  
+  .footer-menus
+    display: flex
+    justify-content: space-between
+
+  .footer-menu
+    margin-right: 20px
+    &.last
+      margin-right: 0
+    h2
+      margin-top: 0
+      margin-bottom: 30px
+      font-size: 26px
+      line-height: 1
+      a
+        color: $breadcrumb_divider_color
+        font-size: 26px
+        font-family: $light-font-family
+    .menu
+      padding: 0
+      margin: 0
+      list-style: none
+    .menu__item
+      a
+        color: $white_color
+        text-decoration: none
+        border-bottom: 1px solid rgba($white_color, 0.5)
+        &:hover, &.active
+          text-decoration: none
+          color: $white_color
+          border-bottom-color: transparent
+        &:active
+          text-decoration: none
+          color: rgba($white_color, .5)
+          border-bottom-color: transparent
+      & + .menu__item
+        margin-top: 20px
+  
+  .footer-menu-hr
+    display: none
+    margin: 35px 55px
+    border: 0
+    height: 1px
+    width: 100%
+    background: rgba($white_color, .5)
+
+@media screen and (max-width: 767px)
+  .company-map
+    margin-bottom: 30px
+  .footer-menus
+    flex-wrap: wrap
+    justify-content: stretch
+
+  .footer-menu
+    width: 100%
+    text-align: center
+    margin-right: 0
+
+  .footer-menu-hr
+    display: block !important
+
+  .developer-link
+    img
+      margin: 0 auto

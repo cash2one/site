@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 tmce">
+        <h1>Адресная программа</h1>
+    </div>
+    <div class="col-xs-12 col-sm-12">
+
+        <div class="filter-form">
+            <div class="form-group">
+                <label>{{ advertising_form.city.label }}</label>
+                {{ advertising_form.city }}
+            </div>
+            <div class="form-group">
+                <label>{{ advertising_form.adv_type.label }}</label>
+                {{ advertising_form.adv_type }}
+            </div>
+            <div class="form-group">
+                <label>{{ advertising_form.search.label }}</label>
+                {{ advertising_form.search }}
+            </div>
+
+            <button class="btn btn-green btn-size-4" type="submit">Найти</button>
+        </div>
+
+        <nav class="pagination_container abc">
+            <ul class="pagination pagination-abc">
+                <li {% if not current_letter %}class="active"{% endif %}>
+                    <button type="submit">#</button>
+                </li>
+                {% for l in letters %}
+                    <li {% if advertising_form.letters.value == l.0 %}class="active"{% endif %}>
+                        <button type="submit" name="letters" value="{{ l.0 }}">
+                            {{ l.1 }}
+                        </button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        {% if cart_item_counter %}
+            <div class="visible-md visible-lg">
+                {% include "addressprogram/templatetags/ajax_order_summary.html" %}
+            </div>
+        {% endif %}
+        {% if item_list %}
+            <div class="table-responsive">
+                <table class="table-data">
+                    <thead>
+                    <tr>
+                        <th>Адрес</th>
+                        <th>Сторона</th>
+                        <th>Подсветка</th>
+                        <th>GID</th>
+                        <th>Город</th>
+                        <th>GRP</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for passport in item_list %}
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <input class="js-address_order_checkbox" type="checkbox" value="{{ passport.id }}" name="cpid"
+                                           id="{{ passport.id }}"
+                                           {% if passport.in_cart %}checked="checked"{% endif %}/>
+                                    <label for="{{ passport.id }}"><a
+                                            href="{{ passport.get_absolute_url }}">{{ passport.address.address }}</a></label>
+                                </div>
+                            </td>
+                            <td>{{ passport.side }}</td>
+                            <td>{% if passport.backlight %}Да{% else %}Нет{% endif %}</td>
+                            <td><a href="{{ passport.get_absolute_url }}">{{ passport.gid }}</a></td>
+                            <td>
+                                <a href="{{ passport.address.city.get_absolute_url }}">{{ passport.address.city }}</a>
+                            </td>
+                            <td>{{ passport.grp }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td>Адрес</td>
+                        <td>Сторона</td>
+                        <td>Подсветка</td>
+                        <td>GID</td>
+                        <td>Город</td>
+                        <td>GRP</td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        {% else %}
+            <h2>Ничего не найдено...</h2>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        {% if item_list %}
+            {% if cart_item_counter %}
+                {% include "addressprogram/templatetags/ajax_order_summary.html" %}
+            {% endif %}
+            <div class="visible-md visible-lg">
+                <nav class="pagination_container full">
+                    {{ advertising_form.page }}
+                    {% include "templatetags/pagination_as_buttons.html" %}
+                    <span class="pagination_container-sep" aria-hidden="true"></span>
+                    <ul class="pagination pagination-count text-center">
+                        {{ advertising_form.per_page }}
+                        {% include 'templatetags/list_control_as_button.html' %}
+                    </ul>
+                </nav>
+            </div>
+        {% endif %}
+        <button type="submit" name="make_order" value="make_order" class="btn btn-green-still btn-full visible-xs visible-sm">Добавить в заказ</button>
+        {#                    <a href="#" class="btn btn-green-still btn-full visible-xs visible-sm">Вернуться назад</a>#}
+    </div>
+</div>

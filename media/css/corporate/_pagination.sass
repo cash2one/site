@@ -1,0 +1,190 @@
+@import variables
+@import ../bootstrap/mixins
+
+.pagination_container
+  font-size: 14px
+  margin-bottom: 0
+  padding: 0px 10px
+  background-color: $sidebar-divider-color
+  font-weight: 500
+
+  .pagination
+    margin: 15px 0px
+    color: $breadcrumb_active_color
+    text-transform: none
+    width: 100%
+    white-space: nowrap
+
+    li
+      a, button
+        margin: 0 1px
+        border: none
+        outline: none
+        color: $breadcrumb_active_color
+        padding: 6px 10px
+        float: none
+        background: transparent
+        line-height: 1
+        display: inline-block
+        &:hover
+          border-radius: 3px
+
+
+      &:not(:first-child):not(:last-child) a, &:not(:first-child):not(:last-child) button
+        &:hover,&:focus
+          background: $pagination_hover_color
+          color: $link-color
+
+        &:active
+          background: $pagination_active_color
+
+      &:first-child
+        a, button
+          color: $breadcrumb_active_color
+
+          &:hover
+            color: $breadcrumb_active_color
+
+          &:active
+            .pagination-label
+              background: $pagination_active_color
+
+        .pagination-label
+          padding: 6px 10px
+          background: $header_phone_color
+          border-radius: 3px
+          margin-right: 15px
+          display: inline-block
+          &:active
+            background: $pagination_active_color
+
+          .fa
+            color: $link-color
+            font-size: 20px
+            line-height: 16px
+
+        &:hover .pagination-label
+          background: $pagination_hover_color
+
+      &:last-child
+        a, button
+          color: $breadcrumb_active_color
+          &:hover
+            color: $breadcrumb_active_color
+
+          &:active
+            .pagination-label
+              background: $pagination_active_color
+
+        .pagination-label
+          padding: 6px 10px
+          background: $header_phone_color
+          border-radius: 3px
+          margin-left: 15px
+          display: inline-block
+          &:active
+            background: $pagination_active_color
+
+          .fa
+            color: $link-color
+            font-size: 20px
+            line-height: 16px
+
+        &:hover .pagination-label
+          background: $pagination_hover_color
+
+    .active
+      a, button
+        background: $header_phone_color
+        color: $link-color !important
+        border-radius: 3px
+        text-decoration: none
+
+        &:focus
+          color: $link-color
+  .pagination-count
+    li 
+      a, button
+        text-decoration: underline
+      &.first
+        margin-right: 15px
+      &:last-child
+        a, button
+          &:hover,&:focus
+            background: $pagination_hover_color
+            color: $link-color
+
+          &:active
+            background: $pagination_active_color
+
+  .pagination-buttons
+    margin: 10px 0
+    .pull-left, .pull-right
+      button
+        padding: 2px 10px
+
+  &-sep
+    display: block
+    width: 1px
+    height: 28px
+    background: $pagination_separator_bg
+    margin: 9px 35px
+
+  &.full
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-top: 20px
+    .pagination
+      width: auto
+      &:first-child
+        margin-left: -15px
+        width: 500px
+    .pagination_container, [class^=col]
+      padding: 0
+    .row
+      margin: 0
+
+
+  &.abc
+    background: transparent
+    padding: 0
+    margin-bottom: 20px
+    .pagination-abc
+      margin: 0
+      display: flex
+      align-items: center
+      justify-content: space-between
+      li
+        a, button
+          line-height: 0.9
+          padding: 6px 10px
+          display: inline
+          background: none
+          position: relative
+          border: none
+          outline: none
+          color: $breadcrumb_link_color
+          text-decoration: none
+          font-family: $primary-font-family
+          &:after
+            content: ""
+            display: block
+            height: 1px
+            background: $link_border_color
+            position: absolute
+            left: 9px
+            right: 9px
+            bottom: 5px
+
+        //&:first-child, &:last-child
+        //&:hover, &:focus, &.active
+        //  a, button
+
+        &:hover, &:focus, &.active
+          a, button
+            background: $pagination_hover_color
+            color: $link-color
+            border-radius: 3px
+            &:after
+              background: transparent

@@ -1,0 +1,12 @@
+{% load thumbnail %}
+<div class="marker-data tmce">
+    <h4>{{ marker.name }}</h4>
+    <p>{{ marker.content|linebreaksbr }}</p>
+    {% if marker.image %}
+        {% thumbnail marker.image "200x200" crop="center" upscale=False quality=100 as im %}
+            <a title="{{ marker.name }}" class="fakefancy_{{ marker.id }}" href="{{ marker.image.url }}" data-size="{{ marker.image.width }}x{{ marker.image.height }}">
+                <img class="img-responsive" src="{{ im.url }}">
+            </a>
+        {% endthumbnail %}
+    {% endif %}
+</div>

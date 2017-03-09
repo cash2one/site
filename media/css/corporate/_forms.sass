@@ -1,0 +1,277 @@
+@import variables
+@import ../bootstrap/mixins
+
+.inner-feedback-form
+  padding: 22px 35px $em
+  border: 15px solid $form-border-color
+  border-radius: $border-radius-main
+  margin: 0px 0px 45px
+  text-transform: uppercase
+  letter-spacing: 1px
+  font-size: 14px
+
+  +bp-custom($screen-xs-max)
+    padding: 15px
+    border: 1px solid $form-border-color
+
+.corporate_form
+  h3
+    font-weight: 300
+    margin-top: 0px
+
+  p
+    margin-top: 15px
+    font-size: 14px
+    line-height: 14.4px
+    letter-spacing: 0.04em
+
+  legend
+    font-family: $primary-font-family
+    font-weight: 300
+    border-bottom: none
+    font-size: 36px
+    line-height: 1.4
+    letter-spacing: 0px
+    text-transform: none
+    margin-bottom: 40px
+
+  label
+    font-size: 14px
+    line-height: 30px
+    letter-spacing: 0.04em
+    width: 115px
+    padding-right: 15px
+    display: block
+    float: left
+    color: $form_label_color
+    text-align: left
+    margin: 0
+    font-weight: normal
+
+  .form-control
+    border-radius: 2px
+    width: calc(100% - 115px)
+    height: 30px
+    padding: 0 10px
+    border-color: $form_input_color
+
+    &:hover
+      box-shadow: inset 0 0 7px 0 rgba($black_color, .35)
+
+    &:focus
+      border-color: $header_phone_color
+      box-shadow: none
+
+    &.has-error
+      color: $form_input_error_color
+      border-color: $form_input_error_color
+
+      & + .error-text
+        display: inline
+
+  textarea.form-control
+    height: auto
+    resize: vertical
+    padding: 10px
+
+  .form-group
+    position: relative
+    margin-bottom: 10px
+
+    .error-text
+      display: none
+      color: $error-color
+      position: absolute
+      font-size: 18px
+      right: $em + 5px
+      bottom: 2px
+      &:before
+        content: ""
+        display: inline-block
+        vertical-align: middle
+        width: 17px
+        height: 17px
+        background: url(/media/images/error.png) no-repeat center center
+    &-submit
+      margin: 0
+      padding-bottom: 30px
+
+  &.loading
+    button[type="submit"]
+      position: relative
+      cursor: not-allowed
+
+      &:after
+        position: absolute
+        content: ""
+        left: 50%
+        top: 50%
+        width: 30px
+        height: 30px
+        margin-left: -15px
+        margin-top: -15px
+        background: url("/media/img/loader.gif") no-repeat
+
+.secondary_form
+  background: $contact-form-bg
+  border-radius: 2px
+  padding: 25px 80px 25px
+  text-transform: uppercase
+  letter-spacing: 1px
+  font-size: 14px
+
+  h3
+    text-transform: none
+    margin-bottom: 25px
+
+  +bp-custom($screen-sm-max)
+    padding: 25px 30px 25px
+
+.requisites
+  background: $contact-form-bg
+  padding: 0px 30px
+  font-size: 15px
+  letter-spacing: 0.01em
+
+  +clearfix
+
+  span
+    display: block
+    line-height: 21.2px
+
+  p
+    margin: 0px 0px 20px
+
+  h3
+    margin-bottom: 35px
+    margin-top: 25px
+
+.contact-text-bottom
+  margin: 40px 0px
+  font-family: $second-font-family
+  font-size: 13px
+  line-height: 18px
+  letter-spacing: 0.02em
+
+.contact-text-bottom.without-req
+  margin-top: 20px
+
+hr
+  border-top: 2px solid #eeeeee
+  margin-bottom: 40px
+
+.contacts_req
+  h1
+    font-family: $primary-font-family
+    font-weight: 300
+    font-size: 36px
+    line-height: 18px
+    letter-spacing: 0
+    margin-top: 15px
+    margin-bottom: 25px
+
+  h3
+    font-family: $primary-font-family
+    font-weight: 300
+    font-size: 24px
+    line-height: 18px
+    letter-spacing: 0
+
+.order-form
+  font-size: 14px
+  color: $form_label_color
+  label
+    color: $form_label_color
+    font-weight: normal
+  .form-group
+    .error-text
+      display: none
+      color: $error-color
+      position: absolute
+      font-size: 18px
+      right: $em + 5px
+      bottom: 2px
+      &:before
+        content: ""
+        display: inline-block
+        vertical-align: middle
+        width: 17px
+        height: 17px
+        background: url(/media/images/error.png) no-repeat center center
+  .form-control
+    height: 38px
+    border-color: $form_control_border
+    max-width: 190px
+    +bp-custom($screen-sm)
+      max-width: 100%
+      width: 100%
+    &:hover
+      box-shadow: inset 0 0 7px 0 rgba($black_color, .35)
+
+    &:focus
+      border-color: $header_phone_color
+      box-shadow: none
+
+    &.has-error
+      color: $form_input_error_color
+      border-color: $form_input_error_color
+
+      & + .error-text
+        display: inline
+
+  .form-fieldset
+    margin-bottom: 15px
+    .form-group
+      max-width: 190px
+      +bp-custom($screen-sm)
+        width: 100%
+        max-width: 100%
+
+  .form-group-period, .form-fieldset
+    display: flex
+    align-items: center
+    justify-content: space-between
+    flex-direction: row
+    +bp-custom($screen-sm)
+      flex-direction: column
+  .form-group-period
+    +bp-custom($screen-sm)
+      align-items: flex-start
+    label
+      margin-bottom: 0
+      margin-right: 55px
+  .form-group-remark, .form-group-submit
+    text-align: right
+  .form-group-remark
+    margin-bottom: 0
+
+.address_order_form
+  position: relative
+  min-height: 60px
+  &.loading
+    &:before
+      position: absolute
+      width: 100%
+      height: 100%
+      content: ""
+      background: white
+      z-index: 2
+      +opacity(0.2)
+    &:after
+      z-index: 3
+      position: absolute
+      display: inline-block
+      left: 50%
+      top: 50%
+      margin-left: -25px
+      margin-top: -25px
+      content: "\f110"
+      color: $pagination_active_color
+      -webkit-animation: fa-spin 2s infinite linear
+      animation: fa-spin 2s infinite linear
+      font: normal normal normal 50px/1 FontAwesome
+
+@media screen and (max-width: 767px)
+  .corporate_form
+    label, .form-control
+      width: 100%

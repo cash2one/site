@@ -1,0 +1,58 @@
+@import variables
+
+.modal.simple-modal
+  position: absolute
+  overflow: visible
+
+  &.active
+    display: block
+
+  .modal-dialog
+    z-index: $zindex-modal
+    transition: top 200ms ease-in-out
+
+    +bp-custom($screen-xs-max)
+      margin: 0px
+      padding: 15px
+
+.modal-dialog
+  width: 465px
+  .modal-pad
+    padding: 0 30px
+
+  .close
+    position: absolute
+    z-index: 10
+    top: 30px
+    right: 30px
+
+.modal-title
+  font-family: $primary-font-family
+  font-weight: 300
+  font-size: 34px
+  line-height: 34px
+  letter-spacing: 0
+  color: $white_color
+  padding: 25px 80px 25px 30px
+  margin: 0 -30px 40px
+  text-align: left
+  background-color: $breadcrumb_link_color
+
+.modal-body
+  padding: 0
+  margin: 0
+
+.modal-backdrop
+  background-color: $popup_overlay_color
+
+.modal-content
+  box-shadow: 0 0 10px 0 rgba($black_color, .36) !important
+  border-radius: 0
+
+@media screen and (max-width: 767px)
+  .modal-dialog
+    width: 100%
+    min-width: $page-min-width
+  .modal-title
+    font-size: 24px
+    margin: 0 -30px 20px

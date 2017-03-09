@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load thumbnail main_extras %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block main-content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 tmce">
+            <h1>Паспорт носителя</h1>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 tmce">
+            <div class="card-info-row">
+                <div class="card-info-row__left">
+                    <div class="pasport-sides">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="side-a">
+                                {% for image in images %}
+                                    {% if forloop.first %}
+                                        {% thumbnail image.file "408x560" crop="center" upscale=False quality=100 as im %}
+                                            <a title="{{ image.name }}" class="fakefancy" href="{{ image.file.url }}"
+                                               data-size="{{ image.file.width }}x{{ image.file.height }}" style="background-image: url('{{ im.url }}')">
+                                            </a>
+                                        {% endthumbnail %}
+                                    {% else %}
+                                        <a title="{{ image.name }}" class="fakefancy" href="{{ image.file.url }}" data-size="{{ image.file.width }}x{{ image.file.height }}"></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="side-b"><img src="/media/images/pasport_side_b.png" alt="Строна B"/></div>
+                        </div>
+
+                        <ul class="nav nav-tabs" role="tablist">
+                            {% for link in other %}
+                                <li {% comment %}role="presentation"{% endcomment %}
+                                        class="{% if link.side == passport.side %}active{% endif %}">
+                                    <a class="btn {% if link.side == passport.side %}btn-green-flat btn-green-flat-corner{% else %}btn-blue btn-blue-corner{% endif %}"
+                                       href="{{ link.get_absolute_url }}" {% comment %}aria-controls="side-a" role="tab"
+                                                                      data-toggle="tab"{% endcomment %}>Сторона {{ link.side }}</a>
+                                </li>
+                                {#                            <li role="presentation">#}
+                                {#                                <a href="#side-b" class="btn btn-blue btn-blue-corner"#}
+                                {#                                                       aria-controls="side-b" role="tab" data-toggle="tab">Сторона B</a>#}
+                                {#                            </li>#}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-info-row__right">
+                    <div class="pasport-info">
+                        <h4 class="pasport-info__title">{{ passport.address.address }}</h4>
+                        <div class="pasport-info__content">
+                            <div class="short-info-list short-info-list--pasport">
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Город</div>
+                                    <div class="short-info-list__row-value">{{ passport.address.city }}</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Тип рекламного носителя</div>
+                                    <div class="short-info-list__row-value">{{ passport.type }}</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">GID</div>
+                                    <div class="short-info-list__row-value">{{ passport.gid }}</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Формат</div>
+                                    <div class="short-info-list__row-value">{{ passport.size }}&nbsp;(м)</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Материал</div>
+                                    <div class="short-info-list__row-value">{{ passport.get_material_file|safe }}</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Подсветка</div>
+                                    <div class="short-info-list__row-value">{% if passport.backlight %}Да{% else %}
+                                        Нет{% endif %}</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Описание</div>
+                                    <div class="short-info-list__row-value">{{ passport.description }}</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Сторона</div>
+                                    <div class="short-info-list__row-value">{{ passport.side }}</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Рейтинг поверхности</div>
+                                    <div class="short-info-list__row-value">{{ passport.grp }}</div>
+                                </div>
+                                <div class="short-info-list__row">
+                                    <div class="short-info-list__row-title">Эффект. аудитория (OTS)</div>
+                                    <div class="short-info-list__row-value">{{ passport.ots }} (тыс. человек в день)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pasport-info__footer">
+                            {% if passport.has_print %}
+                                <a class="btn btn-blue" href="{% url 'program:get-passport-pdf' passport.id %}">Распечатать</a>
+                            {% endif %}
+                            <button type="button" class="btn btn-blue">Сохранить</button>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="passport" value="{{ passport.id }}" class="btn btn-blue">
+                                    Выбрать
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-info-row">
+                <div class="card-info-row__left">
+                    <div class="pasport-schema">
+                        <img src="{{ passport.get_scheme_url }}" alt="Расположение конструкции"/>
+                    </div>
+                </div>
+                <div class="card-info-row__right">
+                    <script>
+                        var marker_icon_types = {
+                            "{{ passport.type.slug|safe }}": "{{ passport.type.marker_icon.url|safe }}",
+                        };
+
+                        var city_marker_data = [
+                            {
+                                "coords": [{{ passport.address.coordinates }}],
+                                "type": "{{ passport.address.prod.slug }}",
+                                "object_id": {{ passport.id }}
+                            },
+                        ];
+                    </script>
+                    <div class="pasport-map" id="pasport-map" data-api-url="{% get_gmaps_url %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

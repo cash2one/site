@@ -1,0 +1,39 @@
+=bp-custom($width)
+  @media only screen and (max-width: $width)
+    @content
+
+=bp-from($width)
+  @media only screen and (min-width: $width)
+    @content
+
+=gradient_top($color-top, $color-bottom)
+  background: -moz-linear-gradient(top, $color-top 0%, $color-bottom 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $color-top), color-stop(100%, $color-bottom))
+  background: -webkit-linear-gradient(top, $color-top 0%, $color-bottom 100%)
+  background: linear-gradient(to bottom, $color-top 0%, $color-bottom 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color-top}', endColorstr='#{$color-bottom}',GradientType=0 )
+
+=gradient_right($color-left, $color-right)
+  background: -moz-linear-gradient(left, $color-left 0%, $color-right 100%)
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, $color-left), color-stop(100%, $color-right))
+  background: -webkit-linear-gradient(left, $color-left 0%, $color-right 100%)
+  background: linear-gradient(to right, $color-left 0%, $color-right 100%)
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+
+  @-moz-keyframes #{$name}
+    @content
+
+  @-ms-keyframes #{$name}
+    @content
+
+  @keyframes #{$name}
+    @content
+
+=_animation($name, $props)
+  -ms-animation: $name $props
+  -moz-animation: $name $props
+  -webkit-animation: $name $props
+  animation: $name $props

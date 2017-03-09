@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block page-seo %}
+    {% load seo_extras %}
+    {% get_seo flatpage %}
+{% endblock %}
+
+{% block header %}
+    {% include "templatetags/header/header.html" with page_url=flatpage.url %}
+{% endblock %}
+
+{% block main-content %}
+    <form class="address_order_form" id="js-address_order_form" action="{% url 'program:program_list' %}" method="get">
+        {% include 'addressprogram/templatetags/program_list_inner.html' %}
+    </form>
+{% endblock %}
+
+{% block order_floating_block %}{% endblock %}

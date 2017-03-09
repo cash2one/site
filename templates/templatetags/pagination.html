@@ -1,0 +1,71 @@
+{% if items.paginator.page_range|length > 1 %}
+<div class="row">
+    <div class="col-xs-12">
+        <nav class="pagination_container">
+            <ul class="pagination text-center">
+                {# if items.has_previous #}
+                    <!--li>
+                        <a href="{# page_url #}?{# qs #}&page={# items.previous_page_number #}&letter={# letter #}&city={# city #}&type={# adv_type #}&gid_address={# query #}"
+                           aria-label="Previous">
+                            <span class="pagination-label" aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+                            <span class="visible-sm-inline visible-md-inline visible-lg-inline">В начало</span>
+                        </a>
+                    </li-->
+                {# endif #}
+
+                {% if items.range_page|first > 1 %}
+                    <!--li class="{# if items.number == 1 #}active{# endif #}"><a
+                            href="{# page_url #}?{# qs #}&page=1&letter={# letter #}&city={# city #}&type={# adv_type #}&gid_address={# query #}">1</a>
+                    </li-->
+
+                    <li>
+                        <a href="{{ page_url }}?{{ qs }}&page=1&letter={{ letter }}&city={{ city }}&type={{ adv_type }}&gid_address={{ query }}">
+                            <span class="pagination-label" aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+                            <span class="visible-sm-inline visible-md-inline visible-lg-inline">В начало</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% for page_num in items.range_page %}
+                    <li class="{% if page_num == items.number %}active{% endif %}"><a
+                            href="{{ page_url }}?{{ qs }}&page={{ page_num }}&letter={{ letter }}&city={{ city }}&type={{ adv_type }}&gid_address={{ query }}">{{ page_num }}</a>
+                    </li>
+                {% endfor %}
+
+                {% if items.range_page|last < items.paginator.num_pages  %}
+                    <!--li class="{# if items.number == items.paginator.num_pages #}active{# endif #}"><a
+                            href="{# page_url #}?{# qs #}&page={# items.paginator.num_pages #}&letter={# letter #}&city={# city #}&type={# adv_type #}&gid_address={# query #}">{# items.paginator.num_pages #}</a>
+                    </li-->
+
+                    <li>
+                        <a href="{{ page_url }}?{{ qs }}&page={{ items.paginator.num_pages }}&letter={{ letter }}&city={{ city }}&type={{ adv_type }}&gid_address={{ query }}">
+                            <span class="visible-sm-inline visible-md-inline visible-lg-inline">В конец</span>
+                            <span class="pagination-label" aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                        </a><br>
+                    </li>
+                {% endif %}
+
+                {# if items.has_next #}
+                    <!--li>
+                        <a href="{# page_url #}?{# qs #}&page={# items.next_page_number #}&letter={# letter #}&city={# city #}&type={# adv_type #}&gid_address={# query #}"
+                           aria-label="Next">
+                            <span class="visible-sm-inline visible-md-inline visible-lg-inline">В конец</span>
+                            <span class="pagination-label" aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                        </a><br>
+                    </li-->
+                {# endif #}
+
+
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endif %}
+
+{#        {% if items.range_page|first > 2 %}#}
+{#            <div class="nav-item"><span>...</span></div>#}
+{#        {% endif %}#}
+
+{#        {% if items.range_page|last < items.paginator.num_pages|add:"-1"  %}#}
+{#            <div class="nav-item"><span>...</span></div>#}
+{#        {% endif %}#}

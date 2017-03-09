@@ -1,0 +1,1284 @@
+.btn
+  font-family: $medium-font-family
+  outline: 0 !important
+  cursor: pointer
+
+  &-green
+    text-align: center
+    padding: 0 10px
+    color: $white_color !important
+    border-radius: 5px
+    border: 0
+    outline: 0
+    text-shadow: 0 -1px 0 rgba(#324f06, .77)
+    //box-shadow: inset 0 0 5px 0 rgba($white_color, .46)
+    transition: .15s cubic-bezier(.86,0,.07,1) 0s
+    //+gradient_top(#5d920c, #91dc1c)
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAA1CAYAAABiIppLAAAAeUlEQVQ4jWPccDvnPwMWwPL2+z1s4gwsH388wy7x7fd77BK///7ALvH/H1a7GVj+YxcnTwKHHQw4dfwj1SgqOpdhIIMEj6tobwduy4eWHXiMIt1V9PAgyZZj10BNy5lwWIHHVawsnNgleNiFsEsIckthlxAXUMEqAQBirGSGaQD+XQAAAABJRU5ErkJggg==')
+    background-repeat: repeat-x
+    background-position: 0 0
+    background-size: auto 100%
+
+    &:hover, &:focus
+      //+gradient_top(#6ea915, #b0f446)
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAA1CAYAAACTKcHGAAAAi0lEQVQ4je3TMQ5AQBAF0MUSQSEShdZRnc1NdAqhIIKdcYT/i80mElu/zJ+ZzUTjMqgBz27XhIyx+z1jdLgVo8edGKnCvo0VIZAySEQIxPRExnmrxPXETBe6p6/uydt0gZdJnRR5d9D4jOMQtwJouLgY1+Gnw5WouB+R35ImOUZl1mBUFx1GbdVD9ALn7XKSVA6yegAAAABJRU5ErkJggg==)
+      background-repeat: repeat-x
+      background-position: 0 0
+      background-size: auto 100%
+      color: $white_color
+    &:active
+      +gradient_top(#507a0f, #5f950d)
+      box-shadow: inset 0 0 5px 0 #4e790d
+      color: $white_color
+
+  &-size-1
+    font-size: 16px
+    width: 195px
+    height: 52px
+    line-height: 52px
+
+  &-size-4
+    font-size: 16px
+    padding: 0 20px
+    height: 40px
+    line-height: 40px
+
+  &-full
+    width: 100%
+    height: 47px
+    line-height: 47px
+    font-size: 18px
+    & ~ .btn-full
+      margin-top: 13px
+
+  &-back
+    padding-left: 50px
+    padding-right: 40px
+    position: relative
+    text-shadow: none
+    height: 45px
+    font-size: 14px
+    font-weight: 500
+    line-height: 45px
+    box-shadow: none
+    background: $header_phone_color
+    &:before
+      content: ''
+      position: absolute
+      width: 6px
+      height: 11px
+      top: 50%
+      transform: translateY(-50%)
+      left: 20px
+      background: url('/media/images/back.png') no-repeat 0 0
+    &:hover, &:focus
+      background: $back_btn_color_hover
+    &:active
+      background: $pagination_active_color
+
+  &-close
+    display: block
+    text-decoration: none
+    padding: 0
+    margin: 0
+    overflow: hidden
+    text-indent: -9999px
+    cursor: pointer
+    width: 30px
+    height: 30px
+    opacity: 1 !important
+    background: url('/media/images/close.png') no-repeat 0 0
+    &:hover
+      background: url('/media/images/close.png') no-repeat -30px 0
+    &:active
+      background: url('/media/images/close.png') no-repeat -60px 0
+
+  &-delete
+    width: 13px
+    height: 13px
+    padding: 0
+    margin: 0
+    border: 0
+    overflow: hidden
+    text-indent: -9999px
+    background: url('/media/images/delete.png') no-repeat 0 0
+    &:hover, &:focus, &:active
+      background: url('/media/images/delete.png') no-repeat 0 0
+
+  &-green-still
+    background: $green_still_bg
+    text-align: center
+    color: $white_color
+    padding-top: 0
+    padding-bottom: 0
+    border-radius: 0
+    &:hover, &:focus
+      color: $white_color
+      background: #6ea915
+    &:active
+      color: $white_color
+      background: #507a0f
+
+  &-blue
+    color: $white_color
+    text-align: center
+    font-size: 14px
+    border-radius: 0
+    min-width: 145px
+    padding: 0 10px
+    height: 55px
+    line-height: 55px
+    background: $breadcrumb_link_color
+    &:focus
+      color: $white_color
+    &:hover
+      background: $table_data_cell_hover
+      color: $white_color
+    &:active
+      background: $blue_btn_active
+      color: $white_color
+
+  &-blue-corner, &-green-flat-corner
+    position: relative
+    &:before
+      content: ""
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
+      width: 0
+      height: 0
+      top: -16px
+
+  &-blue-corner
+    &:before
+      border-left: 15px solid transparent
+      border-right: 15px solid transparent
+      border-bottom: 16px solid $breadcrumb_link_color
+    &:hover
+      &:before
+        border-bottom-color: $table_data_cell_hover
+    &:active
+      &:before
+        border-bottom-color: $blue_btn_active
+
+  &-green-flat-corner
+    &:before
+      border-left: 15px solid transparent
+      border-right: 15px solid transparent
+      border-bottom: 16px solid $breadcrumb_divider_color
+    &:hover
+      &:before
+        border-bottom-color: $btn_green_flat_hover
+    &:active
+      &:before
+        border-bottom-color: $btn_green_flat_active
+
+  &-green-flat
+    font-family: $bold-font-family
+    color: $white_color
+    text-align: center
+    height: 55px
+    line-height: 55px
+    text-align: center
+    border-radius: 0
+    padding: 0 10px
+    min-width: 145px
+    font-size: 14px
+    background: $breadcrumb_divider_color
+    &:focus
+      color: $white_color
+    &:hover
+      background: $btn_green_flat_hover
+      color: $white_color
+    &:active
+      color: $white_color
+      background: $btn_green_flat_active
+
+.caption
+  &-footer
+    color: $white_color
+    font-size: 12px
+    margin-bottom: 4px
+  &-phone
+    font-size: 11px
+    color: $caption_phone_color
+
+@import "../bootstrap/variables"
+.filter-form
+  display: flex
+  flex-wrap: nowrap
+  align-items: flex-end
+  margin-bottom: 20px
+
+  +bp-custom($screen-md)
+    flex-wrap: wrap
+  .btn
+    margin-left: auto
+    min-width: 120px
+  .form-group
+    margin-bottom: 0
+    margin-right: 20px
+    label
+      font-family: $medium-font-family
+      font-size: 14px
+      line-height: 1
+      color: $filter_form_label_color
+      margin-bottom: 10px
+    .form-control
+      height: 40px
+      outline: 0 !important
+      box-shadow: none !important 
+      border-radius: 4px
+      padding: 0 10px
+      border: 1px solid $form_input_color
+  .select2
+    min-width: 250px
+
+.select2
+  &-selection
+    &__rendered
+      line-height: 38px !important
+      color: $filter_form_label_color !important
+    &__arrow
+      width: 40px !important
+      height: 38px !important
+      &:before
+        content: ""
+        position: absolute
+        width: 1px
+        height: 28px
+        left: 0px
+        top: 50%
+        margin-top: -14px
+        background: $filter_select_separator_bg
+      b
+        border-color: $header_phone_color transparent transparent transparent !important
+        border-width: 10px 10px 0 10px !important
+        margin-top: -5px !important
+        margin-left: -10px !important
+    &--single
+      height: 40px !important
+      border-radius: 4px
+      border: 1px solid $form_input_color !important
+      color: $filter_form_label_color
+      font-size: 14px
+      padding: 0 40px 0 10px !important
+  &-container
+    display: block
+    &--open
+      .select2-selection__arrow
+        display: none
+  &-dropdown
+    border: 1px solid $form_input_color !important
+  &-results
+    &__option
+      padding: 6px 10px !important
+      font-size: 14px
+      line-height: 1.3
+      color: $filter_form_label_color
+      &[aria-selected=true]
+        color: $white_color
+        background-color: $pagination_active_color !important
+        font-family: $bold-font-family
+      &--highlighted
+        background-color: $mobile_wrapper_bg !important
+        color: $filter_form_label_color !important
+        &[aria-selected=true]
+          color: $white_color !important
+          background-color: $pagination_active_color !important
+          font-family: $bold-font-family
+
+.table-data
+  width: 100%
+  thead, tfoot
+    th, td
+      color: $white_color
+      background: rgba($breadcrumb_link_color, .8)
+      font-size: 14px
+      line-height: 1.1
+      padding: 15px 10px
+      font-family: $medium-font-family
+      border-left: 1px solid rgba($filter_select_separator_bg, .5)
+      text-align: center
+      &:first-child
+        border-left: 0
+        border-radius: 4px 0 0 4px
+        text-align: left
+      &:last-child
+        border-radius: 0 4px 4px 0
+  tbody
+    td
+      padding: 15px 10px
+      font-size: 13px
+      border-left: 1px solid rgba($filter_select_separator_bg, .5)
+      text-align: center
+      &:first-child
+        border-left: 0
+        text-align: left
+      a
+        color: $breadcrumb_link_color
+    tr
+      &:nth-of-type(odd)
+        td
+          background: $table_data_cell_bg
+      &:hover
+        td
+          background: rgba($table_data_cell_hover, .2)
+
+.ico-delete
+  display: inline-block
+  width: 18px
+  height: 16px
+  background: url('/media/images/trash.png') no-repeat 0 0
+
+.table-data-detail
+  tbody, thead, tfoot
+    td, th
+      &:nth-child(2)
+        text-align: left
+
+.checkbox
+  margin: 0
+  label
+    position: relative
+    padding-left: 30px
+    color: $breadcrumb_link_color
+    a
+      color: $breadcrumb_link_color
+    min-height: 1px
+    &:before
+      content: ""
+      position: absolute
+      left: 0
+      top: 0
+      width: 16px
+      height: 16px
+      border-radius: 3px
+      border: 1px solid $form_input_color
+      background: $white_color
+  input
+    display: none
+    &:checked
+      & ~ label
+        color: $label_checked
+        font-family: $medium-font-family
+        a
+          color: $label_checked
+        &:before
+          +gradient_top(#7cbf16, #60960d)
+.city-list
+  display: flex
+  justify-content: flex-end
+  list-style: none
+  padding: 0
+  margin: 15px 0 0
+  li
+    padding: 0 !important
+    margin: 0 0 0 15px !important
+    &:before
+      display: none
+    a
+      font-size: 14px
+
+.city-detail
+  padding: 55px 50px
+  background: url('/media/images/pattern.png') repeat 0 0
+  &-title, &-description
+    width: calc(100% - 270px)
+  &-title 
+    margin: 0 0 20px !important
+    line-height: 1.1 !important
+    float: right
+  &-description
+    float: right
+    clear: right
+  &-image
+    float: left
+    max-width: 220px
+    img
+      display: block
+      max-width: 100%
+.short-info-list
+  margin-bottom: 40px
+  &__row
+    display: flex
+    & + .short-info-list__row
+      margin-top: 10px
+    &-title
+      color: $breadcrumb_link_color
+      font-family: $medium-font-family
+      max-width: 150px
+      width: 100%
+  &--pasport
+    margin-bottom: 36px
+    .short-info-list__row
+      line-height: 30px
+    .short-info-list__row + .short-info-list__row
+      margin-top: 15px
+    .short-info-list__row-title
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      line-height: 1.1
+      width: 100%
+      max-width: 230px
+      margin-right: 20px
+      &:after
+        content: ""
+        display: inline-block
+        flex-grow: 1
+        margin-left: 10px
+        height: 1px
+        background: rgba($breadcrumb_active_color, .1)
+    .short-info-list__row-value
+      line-height: 1.1
+
+.page-title-city
+  margin-bottom: 20px !important
+.city-map-container
+  height: 330px
+.promo-types-list
+  display: flex
+  margin-top: 15px
+  margin-bottom: 35px
+  text-align: center
+  &__row
+    position: relative
+    padding-bottom: 15px
+    width: 100%
+    &:before
+      content: ""
+      position: absolute
+      background: rgba($header_phone_color, .3)
+      width: 1px
+      height: 55px
+      left: 0
+      bottom: 0
+    &:first-child
+      &:before
+        display: none
+.promo-type
+  cursor: pointer
+  &__ico
+    display: flex
+    margin: 0 auto
+    width: 40px
+    height: 40px
+    border-radius: 30px
+    border: 1px solid $white_color
+    position: relative
+    align-items: center
+    justify-content: center
+    overflow: hidden
+    img
+      &.normal
+        display: block
+      &.active
+        display: none
+  &__title
+    display: inline-block
+    font-size: 17px
+    line-height: 1
+    color: $type_color
+    border-bottom: 1px solid rgba($type_color, .5)
+
+  &:hover,&:active, &.active
+    .promo-type__title
+      color: $header_phone_color
+      border-bottom-color: transparent
+      font-family: $medium-font-family
+
+  &:active, &.active
+    .promo-type__ico
+      border-color: $header_phone_color
+      img
+        &.normal
+          display: none
+        &.active
+          display: block
+.map-overlay-window
+  max-width: 190px
+  width: 190px
+  padding: 13px
+  text-align: center
+  color: $white_color
+  font-size: 13px
+  font-family: $primary-font-family
+  line-height: 1.3
+  img
+    display: block
+    max-width: 100%
+    max-height: 110px
+    margin: 15px auto
+
+.order-block
+  margin: 25px 0 27px
+  &__title
+    font-size: 46px
+    text-transform: lowercase
+    color: $order_block_title_color
+    line-height: 1
+    position: relative
+    margin: 0 0 0 -3px
+  &__content
+    position: relative
+    z-index: 1
+    margin-top: -7px
+    padding: 20px 17px 15px 13px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    background: url('/media/images/pattern.png') repeat 0 0
+  .btn
+    min-width: 120px
+  & + .table-responsive
+    margin-top: 27px
+
+.order-info
+  padding-right: 14px
+  border-right: 1px solid rgba($order_info_content_color, .2)
+  &__title
+    font-size: 12px
+    color: $filter_form_label_color
+    line-height: 1
+    margin-bottom: 10px
+  &__content
+    font-size: 19px
+    line-height: 1
+    color: $order_info_content_color
+    font-family: $medium-font-family
+
+.order-info-links
+  display: flex
+  a 
+    line-height: 1
+    margin: 0 22px
+    font-size: 14px
+    color: $breadcrumb_link_color
+    border-bottom: 1px solid rgba($breadcrumb_link_color, .3)
+    &:hover
+      text-decoration: none
+      border-bottom-color: transparent
+
+.order-float-info 
+  position: fixed
+  z-index: 10
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: $order_float_block_bg
+
+.order-block-float
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin: 0
+  .order-block__title
+    text-transform: none
+    font-size: 24px
+    color: $breadcrumb_divider_color
+    font-family: $medium-font-family
+  .order-block__content  
+    width: 80%
+    padding: 10px 0
+    margin: 0
+    background: transparent
+  .order-info
+    padding-left: 14px
+    border-right-color: rgba($white_color, .2)
+    &:first-child
+      border-left: 1px solid rgba($white_color, .2)
+    &__title
+      color: $white_color
+      margin: 0
+    &__content
+      color: $breadcrumb_divider_color
+  .order-info-links
+    margin: 0 50px
+    a
+      color: $white_color
+      border-bottom-color: rgba($white_color, .3)
+      &:hover
+        border-bottom-color: transparent
+
+.gm-style-iw-city
+  width: 202px !important
+  border-radius: 4px
+  top: auto !important
+  left: 0 !important
+  border: 0
+  box-shadow: none
+  background-color: $open_menu_item
+  bottom: 0
+  > div
+    width: 100%
+    overflow: visible !important
+    max-height: none !important
+
+.gm-style-iw-corner
+  left: 100px !important
+
+.card-info-row
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  margin: 12px 0 25px
+  &__left
+    width: 43.08510638%
+  &__right
+    width: 54.78723404%
+
+
+
+.pasport-schema
+  max-width: 100%
+  overflow: hidden
+  background: $order_info_content_color
+  img
+    width: 100%
+    height: auto
+
+.pasport-stuff-order
+  .order-block
+    margin: 0
+
+.pasport-info
+  padding: 30px 30px 23px 27px
+  background: url('/media/images/pattern.png') repeat 0 0
+  &__title
+    margin: 0 0 25px !important
+    line-height: 1.2 !important
+  &__content, &__footer
+    font-size: 14px
+  &__footer
+    display: flex
+    .btn
+      margin-right: 13px
+
+.pasport-sides
+  position: relative
+  height: 100%
+  .tab-content
+    position: relative
+    z-index: 1
+    height: 100%
+    .tab-pane
+      display: none
+      height: 100%
+      a
+        display: block
+        height: 100%
+        background-repeat: no-repeat
+        background-position: center
+        background-size: cover
+      img
+        max-width: 100%
+        height: auto
+      &.active
+        display: block
+
+
+  .nav-tabs
+    position: absolute
+    z-index: 2
+    left: 0
+    bottom: 0
+    right: 0
+    list-style: none !important
+    display: flex
+    margin: 0 !important
+    padding: 0 !important
+    li
+      margin: 0 !important
+      padding: 0 !important
+      list-style-type: none !important
+      flex-grow: 1
+      &:before
+        display: none !important
+      .btn
+        width: 100%
+        min-width: 10px
+        &:before
+          display: none
+      &.active
+        .btn:before
+          display: block
+
+.main-content-print
+  -webkit-filter: grayscale(1)
+  .tmce h1
+    margin-bottom: 20px
+  .pasport-sides
+    min-height: 460px
+    .nav-tabs
+      bottom: 21px
+  .card-info-row
+    display: table-row
+    &__left, &__right
+      height: 100%
+      vertical-align: top
+      display: table-cell
+      padding-bottom: 20px
+    &__right
+      width: 54.78723404%
+      padding-left: 20px
+  .pasport-schema
+    max-height: 260px
+  .header-phone
+    color: black
+    .phone-code
+      color: black
+  .btn-blue
+    background: black
+  .btn-blue-corner:before
+    border-bottom: 16px solid black
+  .short-info-list--pasport
+    display: table
+    width: 100%
+  .short-info-list__row
+    display: table-row
+  .short-info-list__row-title
+    display: table-cell
+    position: relative
+    padding-bottom: 15px
+    width: 230px
+    &:after
+      width: 100%
+      display: block
+      bottom: 16px
+      margin-left: 0px
+  .short-info-list__row-value
+    display: table-cell
+  .pasport-info
+    color: black
+.pasport-map
+  height: 260px
+
+.order-block-form
+  margin-top: 25px
+  padding: 30px 50px
+  background: url('/media/images/pattern.png') repeat 0 0
+  h2
+    margin: 20px 0 !important
+    color: $breadcrumb_link_color !important
+
+.home-page-block-title
+  text-align: center
+  font-size: 46px !important
+  margin: 0 auto 30px !important
+  color: $breadcrumb_link_color
+  font-family: $primary-font-family !important
+  &--white
+    color: $white_color !important
+.home-page-text
+  -webkit-columns: 2
+  -moz-columns: 2
+  columns: 2
+
+.home-products
+  padding-top: 45px
+  padding-bottom: 20px
+
+.home-products-list
+  display: flex
+  flex-wrap: wrap
+
+  .home-products-card
+    width: 33%
+
+.home-products-card
+  position: relative
+  margin-bottom: 55px
+  padding-top: 15px
+
+  &:before, &:after
+    content: ""
+    position: absolute
+    background: rgba($caption_phone_color, .2)
+
+  &:before
+    height: 1px
+    width: 140px
+    top: 0
+    left: 50%
+    margin-left: -70px
+
+  &:after
+    width: 1px
+    height: 140px
+    right: 0
+    bottom: 0
+
+  &:nth-child(3n + 1)
+    padding-right: 25px
+    &:before
+      margin-left: -80px
+
+  &:nth-child(3n + 2)
+    padding-left: 40px
+    padding-right: 40px
+
+  &:nth-child(3n + 3)
+    padding-left: 25px
+    &:before
+      margin-left: -55px
+
+    &:after
+      display: none
+
+  &:nth-child(-n+3)
+    padding-top: 0
+    &:before
+      display: none
+
+  &__ico, &__ico--hover, &__ico--active
+
+    display: block
+    width: 90px
+    height: 90px
+    background-position: center
+    background-repeat: no-repeat
+    margin-bottom: 10px
+    transition: 0.15s ease-in-out 0s
+
+  &__link
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-decoration: none
+    font-size: 20px
+    color: $type_color
+    font-family: $medium-font-family
+    line-height: 1
+    outline: 0 !important
+    border: 0 !important
+
+    &:focus
+      text-decoration: none
+    .home-products-card__ico--hover, .home-products-card__ico--active
+      display: none
+    &:hover
+      color: $breadcrumb_divider_color
+      border: 0 !important
+      text-decoration: none
+      .home-products-card__ico
+        display: none
+      .home-products-card__ico--hover
+        background-size: 100% 100%
+        display: block
+
+    &:active
+      color: $btn_green_flat_active
+      border: 0 !important
+      text-decoration: none
+      .home-products-card__ico--hover, .home-products-card__ico
+        display: none
+      .home-products-card__ico--active
+        display: block
+        background-size: 100% 100%
+
+
+  &__description
+    margin-top: 15px
+    text-align: center
+    font-size: 14px
+    line-height: 1.2
+    color: $breadcrumb_active_color
+
+.city-main-info
+  ul
+    li + li
+      margin-top: 5px !important
+
+.program-chel-map
+  position: absolute
+  z-index: 0
+  right: -15px
+  top: -70px
+  width: 570px
+  height: 665px
+  background: url(/media/images/chel_obl.png) no-repeat center center
+
+  &-container
+    height: 495px
+    position: relative
+    z-index: 0
+
+  &-clouds
+    position: absolute
+    z-index: 1
+    height: 600px
+    width: 542px
+    top: -15px
+    right: 0
+    overflow: hidden
+    &:before
+      content: ''
+      position: absolute
+      z-index: 5
+      top: 0
+      left: 0
+      width: 55px
+      height: 510px
+      +gradient_right($white_color, rgba($white_color, 0))
+
+  &-svg
+    position: absolute
+    z-index: 2
+    top: -60px
+    right: 7px
+
+  &-popup
+    position: absolute
+    z-index: 100
+    display: none
+    &-inner
+      position: relative
+      padding: 20px 20px
+      border-radius: 3px
+      background: $open_menu_item
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      align-items: flex-start
+      margin-bottom: 20px
+      &:after
+        content: ""
+        position: absolute
+        width: 0
+        height: 0
+        bottom: -10px
+        left: 50%
+        margin-left: -10px
+        border-left: 10px solid transparent
+        border-right: 10px solid transparent
+        border-top: 10px solid $open_menu_item
+    a
+      color: $white_color
+      font-size: 13px
+      text-decoration: none
+      border-bottom: 1px solid rgba($white_color, .5)
+      line-height: 1
+      & + a
+        margin-top: 12px
+      &:hover
+        border-bottom-color: transparent
+
+  &-cloud
+    display: block
+    position: absolute
+    z-index: 1
+
+    &--1
+      top: 90px
+      left: 0
+      width: 207px
+      height: 113px
+      background: url(/media/images/cloud1.png) no-repeat center center
+      +_animation(movecloud, 15s linear infinite)
+      
+    &--2
+      top: 275px
+      left: 100px
+      width: 228px
+      height: 123px
+      background: url(/media/images/cloud2.png) no-repeat center center
+      +_animation(movecloud, 19s linear infinite)
+      
+    &--3
+      top: 205px
+      left: 480px
+      width: 186px
+      height: 93px
+      background: url(/media/images/cloud3.png) no-repeat center center
+      +_animation(movecloud, 21s linear infinite)
+      
+    &--4
+      top: 0
+      left: 405px
+      width: 154px
+      height: 76px
+      background: url(/media/images/cloud4.png) no-repeat center center
+      +_animation(movecloud, 20s linear infinite)
+      
+    &--5
+      top: 415px
+      left: 330px
+      width: 280px
+      height: 139px
+      background: url(/media/images/cloud5.png) no-repeat center center
+      +_animation(movecloud, 17s linear infinite)
+      
+    &--6
+      top: 195px
+      left: 190px
+      width: 128px
+      height: 64px
+      background: url(/media/images/cloud6.png) no-repeat center center
+      +_animation(movecloud, 19s linear infinite)
+      
+    &--7
+      top: -5px
+      left: 110px
+      width: 179px
+      height: 99px
+      background: url(/media/images/cloud7.png) no-repeat center center
+      +_animation(movecloud, 23s linear infinite)
+      
+
++keyframes(movecloud)
+  0%
+    margin-left: 700px
+    opacity: .3
+  30%
+    margin-left: 350px
+    opacity: 1  
+  50%
+    margin-left: 0
+    opacity: 1
+  70%
+    margin-left: -350px
+    opacity: 1
+  100%
+    margin-left: -700px
+    opacity: .3
+
+@media screen and (min-width: 768px) and (max-width: 991px) 
+  .table-responsive
+    margin-bottom: 16.5px
+  .pagination-abc
+    flex-wrap: wrap
+    justify-content: center
+    li
+      a
+        display: block
+  .order-block-float
+    .order-info-links
+      margin: 0 20px
+
+  .order-block
+    margin: 0
+    &__content
+      flex-wrap: wrap
+      padding: 17px 10px
+    & + .btn
+      margin-top: 13px
+
+  .order-info
+    box-sizing: border-box
+    width: 100%
+    border-right: 0
+    padding-right: 0
+    margin-right: 13px
+    padding-bottom: 13px
+    border-bottom: 1px solid rgba($order_info_content_color, .2)
+    & + .order-info
+      margin-top: 15px
+
+  .order-info-links
+    justify-content: space-between
+    margin: 20px 0 15px
+    width: 100%
+    a
+      margin: 0
+      font-size: 12px
+
+  .filter-form
+    .btn
+      display: none
+    .form-group
+      width: 100%
+      margin-bottom: 20px
+      margin-right: 0
+      .select2
+        min-width: 100%
+        max-width: 100%
+
+
+@media screen and (max-width: 767px)
+
+  .home-about-text
+    padding: 30px 15px
+    margin-bottom: -30px
+    background-color: rgba($breadcrumb_active_color, .1)
+
+  .home-page-text
+    -webkit-columns: auto
+    -moz-columns: auto
+    columns: auto
+
+  .card-info-row
+    margin: 0 0 10px
+    &__left, &__right
+      width: 100%
+    &__left
+      margin-bottom: 20px
+  
+  .pasport-map
+    margin-top: 15px
+    margin-bottom: 20px
+
+  .pasport-info
+    margin: 0 -15px
+    &__title
+      font-size: 15px !important
+      font-family: $primary-font-family !important
+    &__footer
+      .btn
+        min-width: 90px
+        height: 35px
+        line-height: 35px
+        font-size: 12px
+        padding: 0 5px
+
+  .pasport-sides
+    .nav-tabs
+      li
+        .btn
+          font-size: 10px
+          height: 40px
+          line-height: 40px
+
+  .order-block
+    margin: 0
+    &__content
+      flex-wrap: wrap
+      padding: 17px 10px
+    & + .btn
+      margin-top: 13px
+
+  .order-info
+    box-sizing: border-box
+    width: 100%
+    border-right: 0
+    padding-right: 0
+    margin-right: 13px
+    padding-bottom: 13px
+    border-bottom: 1px solid rgba($order_info_content_color, .2)
+    & + .order-info
+      margin-top: 15px
+
+  .order-info-links
+    justify-content: space-between
+    margin: 20px 0 15px
+    width: 100%
+    a
+      margin: 0
+      font-size: 12px
+
+  .city-map-container
+    height: 300px
+    margin-top: 25px
+
+  .city-detail
+    padding: 20px 25px
+    &-title, &-description, &-image
+      float: none
+      width: 100%
+    &-title
+      font-size: 40px
+      margin: 0 0 15px !important
+    &-image
+      margin-bottom: 20px
+  .short-info-list
+    &__row
+      flex-wrap: wrap
+      &-title
+        width: 100%
+      &-value
+        width: 100%
+    &--pasport
+      margin-bottom: 25px
+      .short-info-list__row-value, .short-info-list__row-title
+        font-size: 9px
+      .short-info-list__row-title
+        margin-right: 10px
+        max-width: 145px
+      .short-info-list__row
+        flex-wrap: nowrap
+
+  .page-title-city
+    margin-bottom: 15px !important
+  .promo-types-list
+    margin-bottom: 10px
+    flex-wrap: wrap
+    &__row
+      width: 50%
+      &:nth-of-type(odd)
+        &:before
+          display: none
+  .filter-form
+    .btn
+      display: none
+    .form-group
+      width: 100%
+      margin-bottom: 20px
+      margin-right: 0
+      .select2
+        min-width: 100%
+        max-width: 100%
+  .pagination-abc
+    flex-wrap: wrap
+    justify-content: center
+    li
+      a
+        display: block
+  .city-list
+    margin: 0 -15px
+    padding: 7px 15px !important
+    background: rgba($city_list_bg, .1)
+    justify-content: space-between
+    flex-wrap: wrap
+    li 
+      width: 47%
+      margin: 0 !important
+      a
+        line-height: 17px
+
+  .order-block-form--mobile
+    margin-top: 0
+    margin-bottom: 16px
+    padding: 30px 20px 20px
+    h2
+      margin: 0 0 20px !important
+      font-size: 24px !important
+    .form-fieldset
+      flex-wrap: wrap
+      margin: 0 !important
+    .form-group, .form-control
+      max-width: 100% !important
+      width: 100% !important
+    .form-group
+      margin-bottom: 25px
+      &-remark
+        text-align: left !important
+      &-period
+        flex-wrap: wrap
+        label
+          width: 100%
+          margin-bottom: 5px
+      
+  .order-form
+    .form-group
+      &-submit
+        margin: 0
+
+@media screen and (max-width: 767px) and (min-width: 468px)
+  .home-products-list
+    .home-products-card
+      width: 50%
+      padding: 0 20px !important
+      &:before, &:after
+        display: none !important
+      &:nth-of-type(odd):after
+        display: block !important
+
+
+@media screen and (max-width: 467px)
+  .home-products-list
+    .home-products-card
+      width: 100%
+      padding: 0 !important
+      &:before, &:after
+        display: none !important

@@ -1,0 +1,16 @@
+{% if has_requisites %}
+    {% load placeholder %}
+    <div class="col-xs-12 col-sm-4 tmce">
+        <div class="requisites">
+            {% placeholder "requisites" %}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+        {% load feedback_extras %}{% contacts_form %}
+        <div class="sm-add-pad"></div>
+    </div>
+{% else %}
+    <div class="col-xs-12">
+        {% load feedback_extras %}{% contacts_form %}
+    </div>
+{% endif %}

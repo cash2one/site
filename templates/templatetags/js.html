@@ -1,0 +1,43 @@
+{% load compress %}
+{% compress js %}
+    {# external plugins#}
+    <script type="text/javascript" src="/media/js/vendor/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/owl.carousel.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/jquery.viewportchecker.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/select2.full.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/select2.i18n/ru.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/tab.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/jquery.ui.datepicker-ru.js"></script>
+    <script type="text/javascript" src="/media/js/vendor/scrollreveal.min.js"></script>
+
+    {# site apps #}
+    <script type="text/javascript" src="/media/js/modules/forms.js"></script>
+    <script type="text/javascript" src="/media/js/modules/order.js"></script>
+    <script type="text/javascript" src="/media/js/modules/cached_script.js"></script>
+    <script type="text/javascript" src="/media/js/modules/map.js"></script>
+    <script type="text/javascript" src="/media/js/modules/mobile_navbar.js"></script>
+    <script type="text/javascript" src="/media/js/modules/sidebar.js"></script>
+    <script type="text/javascript" src="/media/js/modules/modals.js"></script>
+    <script type="text/javascript" src="/media/js/modules/sticky_top_menu.js"></script>
+    <script type="text/javascript" src="/media/js/modules/main_menu.js"></script>
+    <script type="text/javascript" src="/media/js/modules/city_map.js"></script>
+    <script type="text/javascript" src="/media/js/modules/front_map.js"></script>
+
+    {# main #}
+    <script type="text/javascript" src="/media/js/app.js"></script>
+{% endcompress %}
+    <script type="text/javascript" src="/media/photoswipe/photoswipe-full.min.js"></script>
+
+
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<div style="display: none">
+    <noindex>
+        {{ site.metrica_settings.metrica|safe }}
+    </noindex>
+</div>

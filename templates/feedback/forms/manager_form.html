@@ -1,0 +1,35 @@
+{% load widget_tweaks %}
+
+{% include "templatetags/modals/modal_top.html" with modal_id="managerModal" %}
+<form remote="true" method="post" action="{% url "feedback:feedback-manager" %}" role="form" class="corporate_form">
+    {% csrf_token %}
+    <div class="issue-form-container clearfix">
+        <div class="modal-title text-center">{% if head %}{{ head }}{% endif %}</div>
+        <div class="row">
+            {% for field in form %}
+                {% if field.is_hidden %}
+                    {{ field }}
+                {% else %}
+                    <div class="form-group col-xs-12 col-sm-12">
+                        <label>{{ field.label }} {% if field.field.required %}
+                            *{% endif %}</label>
+                        {% with WIDGET_ERROR_CLASS='has-error' %}
+                            {% render_field field %}
+                        {% endwith %}
+                        <span class="error-text"></span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 text-right">
+                <p class="contacts__form-hint">* - поля, обязательные для заполнения</p>
+                <div class="form-group form-group-submit">
+                    <button type="submit" class="btn btn-green btn-size-1">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% include "templatetags/modals/modal_bottom.html" %}

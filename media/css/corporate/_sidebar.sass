@@ -1,0 +1,127 @@
+@import variables
+
+$sidebar-caret-offset: 15px
+
+.sidebar
+  margin-top: 15px
+  font-size: 14px
+  line-height: 18px
+  letter-spacing: 0.02em
+
+  li
+    box-sizing: border-box
+    border-top: 1px solid $sidebar-divider-color
+    position: relative
+
+    &:last-child
+      border-bottom: 1px solid $sidebar-divider-color
+
+  .menu-item-wrapper
+    display: table
+    width: 100%
+    position: relative
+
+    &.active
+      .menu-item
+        color: $breadcrumb_link_color
+        font-family: $medium-font-family
+
+
+    &:hover
+      background: none
+
+      .menu-item, .sidebar-caret
+        color: $breadcrumb_link_color
+
+      &:after, &:before
+        content: none
+  .badge 
+    display: none
+    
+  .sidebar-caret
+    display: table-cell
+    text-decoration: none
+    cursor: pointer
+    width: 16px
+    font-size: 18px
+    text-align: center
+    vertical-align: middle
+    box-sizing: border-box
+    color: $main-bgcolor
+    border-left: none
+
+    &:before
+      display: inline-block
+      content: ""
+      width: 0
+      height: 0
+      border-left: 7px solid transparent
+      border-right: 7px solid transparent
+      border-top: 7px solid $breadcrumb_divider_color
+
+    &:hover
+      
+      
+
+    &:active, &:focus
+      
+      
+
+  a.menu-item
+    box-sizing: border-box
+    padding: 12px 0
+    color: $breadcrumb_active_color
+    text-decoration: none
+    position: relative
+    display: table-cell
+
+  ul
+    display: block
+    width: 100%
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+    list-style: none
+
+    &.sidebar-submenu
+      display: none
+      color: $breadcrumb_active_color
+
+      .menu-item-wrapper
+        padding-left: 20px
+
+      li:before
+        position: absolute
+
+        //content: "●";
+        content: "\2022"
+        left: 0
+        top: 12px
+        font-size: 20px
+        color: $breadcrumb_divider_color
+
+      li:last-child
+        border-bottom: none
+
+      a.menu-item
+        color: $breadcrumb_active_color
+
+  li
+    &.open
+      .sidebar-caret
+        &:before
+          border-top: 0
+          border-bottom: 7px solid $sidebar-divider-color
+      & > ul.sidebar-submenu
+        display: block
+      
+
+      
+
+.innerpage_navigation .sidebar
+  .menu-item-wrapper
+    border-radius: $border-radius-main
+
+  .sidebar-caret
+    border-bottom-right-radius: $border-radius-main
+    border-top-right-radius: $border-radius-main
